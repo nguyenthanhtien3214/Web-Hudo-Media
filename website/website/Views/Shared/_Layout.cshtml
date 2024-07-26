@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - website</title>
+    <link rel="stylesheet" href="~/lib/bootstrap-4.0.0-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/website.styles.css" asp-append-version="true" />
+    <!-- Liên kết đến tệp CSS của Font Awesome đã tải về -->
+    <link rel="stylesheet" href="~/css/fontawesome-free-6.6.0-web/fontawesome-free-6.6.0-web/css/all.min.css" />
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="logo">
+                <img src="~/images/logo.png" alt="Company Logo">
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#">Trang Chủ</a></li>
+                    <li class="nav-item"><a href="#">Giới Thiệu</a></li>
+                    <li class="nav-item"><a href="#">Dịch Vụ</a></li>
+                    <li class="nav-item"><a href="#">Thủ Tục Thuê</a></li>
+                    <li class="nav-item"><a href="#">Liên Hệ</a></li>
+                </ul>
+            </nav>
+            <div class="cart">
+                <a href="#">
+                    <img src="~/images/cart.png" alt="Giỏ" class="cart-icon">
+                    <span class="cart-count">3</span>
+                </a>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="content-wrapper">
+                <aside class="sidebar">
+                    <p>Quảng cáo 1</p>
+                </aside>
+                <div class="content">
+                    @RenderBody()
+                </div>
+                <aside class="sidebar">
+                    <p>Quảng cáo 2</p>
+                </aside>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <section class="footer-section">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <div class="footer-widget">
+                        <img src="~/images/logo.png" alt="Logo">
+                        <p>Cám ơn bạn đã ghé thăm chúng tôi và chúc bạn một ngày tốt lành.</p>
+                        <div class="footer-social-icons">
+                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <div class="footer-widget">
+                        <h2>QUICK LINKS</h2>
+                        <ul class="footer-links">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Trang Chủ</a></li>
+                            <li><a href="#">Giới Thiệu</a></li>
+                            <li><a href="#">Dịch Vụ</a></li>
+                            <li><a href="#">Thủ Tục Thuê</a></li>
+                            <li><a href="#">Liên Hệ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <div class="footer-widget">
+                        <h2>HELP CENTER</h2>
+                        <ul class="footer-links">
+                            <li><a href="#">Phản Ánh</a></li>
+                            <li><a href="#">Điều khoản và điều kiện</a></li>
+                            <li><a href="#">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <div class="footer-widget">
+                        <h2>COMPANY</h2>
+                        <ul class="footer-links">
+                            <li><a href="#">Quận 1 , Thành Phố Hồ Chí Minh</a></li>
+                            <li><a href="#">nguyenthanhtien3214@gmail.com</a></li>
+                            <li><a href="#">0938263214</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="footer-bottom">
+            <p>Copyright © 2024. Hudo Media.vn</p>
+            <p>DESIGN BY Nguyễn Thanh Tiến</p>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
