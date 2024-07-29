@@ -4,7 +4,8 @@ using website.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options =>
+    options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
 
 // Add DbContext service
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

@@ -7,6 +7,16 @@
 
 <h1>Product List</h1>
 
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
 @if (ViewBag.ResultMessage != null)
 {
     <div class="alert alert-info">@ViewBag.ResultMessage</div>
@@ -24,95 +34,102 @@
     </div>
 }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.NewProduct.Name)</th>
-            <th>@Html.DisplayNameFor(model => model.NewProduct.Description)</th>
-            <th>@Html.DisplayNameFor(model => model.NewProduct.Price)</th>
-            <th>@Html.DisplayNameFor(model => model.NewProduct.Quantity)</th>
-            <th>@Html.DisplayNameFor(model => model.NewProduct.CategoryId)</th> <!-- Hiển thị CategoryId -->
-            <th>@Html.DisplayNameFor(model => model.NewProduct.ImageUrl)</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Products)
-        {
+@if (Model != null && Model.Products != null)
+{
+    <table class="table">
+        <thead>
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                <td>@Html.DisplayFor(modelItem => item.Description)</td>
-                <td>@Html.DisplayFor(modelItem => item.Price)</td>
-                <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
-                <td>@Html.DisplayFor(modelItem => item.CategoryId)</td> <!-- Hiển thị CategoryId -->
-                <td>
-                    @if (!string.IsNullOrEmpty(item.ImageUrl))
-                    {
-                        <img src="~/@item.ImageUrl" alt="@item.Name" style="width: 100px; height: auto;" />
-                    }
-                    else
-                    {
-                        <span>No Image</span>
-                    }
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-warning">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-danger">Delete</a>
-                </td>
+                <th>@Html.DisplayNameFor(model => model.NewProduct.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.NewProduct.Description)</th>
+                <th>@Html.DisplayNameFor(model => model.NewProduct.Price)</th>
+                <th>@Html.DisplayNameFor(model => model.NewProduct.Quantity)</th>
+                <th>@Html.DisplayNameFor(model => model.NewProduct.CategoryId)</th>
+                <th>@Html.DisplayNameFor(model => model.NewProduct.Image)</th>
+                <th>@Html.DisplayNameFor(model => model.NewProduct.ImageUrl)</th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
-
-<nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-        @if (Model.Products.HasPreviousPage)
-        {
-            <li class="page-item">
-                <a class="page-link" asp-action="ListSanPham" asp-route-page="@(Model.Products.PageNumber - 1)" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-        }
-        else
-        {
-            <li class="page-item disabled">
-                <span class="page-link">&laquo;</span>
-            </li>
-        }
-
-        @for (var i = 1; i <= Model.Products.PageCount; i++)
-        {
-            if (i == Model.Products.PageNumber)
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Products)
             {
-                <li class="page-item active">
-                    <span class="page-link">@i</span>
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CategoryId)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Image)</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.ImageUrl))
+                        {
+                            <img src="~/@item.ImageUrl" alt="@item.Name" style="width: 100px; height: auto;" />
+                        }
+                        else
+                        {
+                            <span>No Image</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-warning">Edit</a> |
+                        <form asp-action="Delete" asp-route-id="@item.ProductId" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            @if (Model.Products.HasPreviousPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-action="ListSanPham" asp-route-page="@(Model.Products.PageNumber - 1)" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
                 </li>
             }
             else
             {
-                <li class="page-item">
-                    <a class="page-link" asp-action="ListSanPham" asp-route-page="@i">@i</a>
+                <li class="page-item disabled">
+                    <span class="page-link">&laquo;</span>
                 </li>
             }
-        }
 
-        @if (Model.Products.HasNextPage)
-        {
-            <li class="page-item">
-                <a class="page-link" asp-action="ListSanPham" asp-route-page="@(Model.Products.PageNumber + 1)" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        }
-        else
-        {
-            <li class="page-item disabled">
-                <span class="page-link">&raquo;</span>
-            </li>
-        }
-    </ul>
-</nav>
+            @for (var i = 1; i <= Model.Products.PageCount; i++)
+            {
+                if (i == Model.Products.PageNumber)
+                {
+                    <li class="page-item active">
+                        <span class="page-link">@i</span>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-action="ListSanPham" asp-route-page="@i">@i</a>
+                    </li>
+                }
+            }
+
+            @if (Model.Products.HasNextPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-action="ListSanPham" asp-route-page="@(Model.Products.PageNumber + 1)" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item disabled">
+                    <span class="page-link">&raquo;</span>
+                </li>
+            }
+        </ul>
+    </nav>
+}
 
 <h1>Create Product</h1>
 
@@ -120,38 +137,37 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="ListSanPham" method="post">
+        <form asp-action="ListSanPham" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label asp-for="NewProduct.Name" class="control-label"></label>
-                <input asp-for="NewProduct.Name" class="form-control" />
+                <input asp-for="NewProduct.Name" class="form-control" required />
                 <span asp-validation-for="NewProduct.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="NewProduct.Description" class="control-label"></label>
-                <textarea asp-for="NewProduct.Description" class="form-control"></textarea>
+                <textarea asp-for="NewProduct.Description" class="form-control" required></textarea>
                 <span asp-validation-for="NewProduct.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="NewProduct.Price" class="control-label"></label>
-                <input asp-for="NewProduct.Price" class="form-control" />
+                <input asp-for="NewProduct.Price" class="form-control" type="number" step="0.01" required />
                 <span asp-validation-for="NewProduct.Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NewProduct.ImageUrl" class="control-label"></label>
-                <input asp-for="NewProduct.ImageUrl" class="form-control" />
-                <span asp-validation-for="NewProduct.ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="NewProduct.Quantity" class="control-label"></label>
-                <input asp-for="NewProduct.Quantity" class="form-control" />
+                <input asp-for="NewProduct.Quantity" class="form-control" type="number" required />
                 <span asp-validation-for="NewProduct.Quantity" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="NewProduct.CategoryId" class="control-label"></label>
-                <select asp-for="NewProduct.CategoryId" class="form-control" asp-items="ViewBag.CategoryId">
+                <select asp-for="NewProduct.CategoryId" class="form-control" asp-items="ViewBag.CategoryId" required>
                     <option value="">Select Category</option>
                 </select>
                 <span asp-validation-for="NewProduct.CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Upload Image</label>
+                <input type="file" name="file" class="form-control" required />
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

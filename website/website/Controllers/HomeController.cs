@@ -1,11 +1,14 @@
-using Microsoft.AspNetCore.Mvc;
+ using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Diagnostics;
+using website.Data;
 using website.Models;
 
 namespace website.Controllers
 {
     public class HomeController : Controller
     {
+       // ApplicationDbContext db=new ApplicationDbContext();
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
