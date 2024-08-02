@@ -13,8 +13,9 @@ namespace website.Models
         [Required]
         [StringLength(255)]
         [Column("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty; // Khởi tạo với giá trị mặc định
 
-        public ICollection<Product> Products { get; set; }
+        public ICollection<Product>? Products { get; set; } = new List<Product>(); // Đánh dấu nullable và khởi tạo với giá trị mặc định
     }
+
 }

@@ -120,20 +120,22 @@
 }
 
 .sidebar {
-    width: 200px;
+    width: 120px;
     background-color: #e9ecef;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     min-height: 700px; /* Ensure sidebar matches the main content height */
+    border-radius: 15px;
 }
 
 .content {
     flex: 1;
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #F0F8FF;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 0 20px;
     min-height: 700px; /* Ensure main content matches the sidebar height */
+    border-radius: 15px;
 }
 
 .footer-section {

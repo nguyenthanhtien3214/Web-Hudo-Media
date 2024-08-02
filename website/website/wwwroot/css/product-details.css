@@ -1,0 +1,47 @@
+﻿<style >
+.product-detail {
+    display: flex;
+    align-items: flex-start;
+}
+
+.product-detail__photo {
+    margin-right: 20px;
+}
+
+    .product-detail__photo img {
+        max-width: 300px; /* Đặt chiều rộng tối đa cho ảnh */
+        height: auto;
+    }
+
+.product-detail__info {
+    flex: 1;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+    .quantity-selector button {
+        background-color: #ff3f40;
+        color: white;
+        border: none;
+        padding: 0.5em 1em;
+        cursor: pointer;
+    }
+
+    .quantity-selector input {
+        width: 3em;
+        text-align: center;
+        margin: 0 0.5em;
+    }
+
+button {
+    background-color: #ff3f40;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
+</style >

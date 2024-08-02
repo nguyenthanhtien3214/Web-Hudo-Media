@@ -3,16 +3,7 @@ CREATE DATABASE camera_rental;
 USE camera_rental;
 
 
--- Tạo bảng customers (Khách hàng)
-CREATE TABLE customers (
-    customer_id INT IDENTITY(1,1) PRIMARY KEY,
-    name NVARCHAR(255) NOT NULL,
-    email NVARCHAR(255) NOT NULL UNIQUE,
-    phone NVARCHAR(50) NOT NULL,
-    address NVARCHAR(255),
-    created_at DATETIME DEFAULT GETDATE()
-);
-GO
+
 
 -- Tạo bảng categories (Danh mục sản phẩm)
 CREATE TABLE categories (
@@ -38,60 +29,66 @@ ADD image_url NVARCHAR(255);
 ALTER TABLE products
 ADD CONSTRAINT UQ_products_name UNIQUE (name);
 
--- Tạo bảng carts (Giỏ hàng)
-CREATE TABLE carts (
+-- Tạo bảng customers (Khách hàng)
+CREATE TABLE customers (
+    customer_id INT IDENTITY(1,1) PRIMARY KEY,
+    full_name NVARCHAR(255) NOT NULL,
+    email NVARCHAR(255) NOT NULL,
+    phone NVARCHAR(20) NOT NULL,
+    address NVARCHAR(255),
+    notes NVARCHAR(MAX)
+);
+GO
+
+-- Tạo bảng cart (Giỏ hàng)
+CREATE TABLE cart (
     cart_id INT IDENTITY(1,1) PRIMARY KEY,
     customer_id INT,
-    created_at DATETIME DEFAULT GETDATE(),
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
-);
-GO
-
--- Tạo bảng cart_items (Sản phẩm trong giỏ hàng)
-CREATE TABLE cart_items (
-    cart_item_id INT IDENTITY(1,1) PRIMARY KEY,
-    cart_id INT,
     product_id INT,
+    image NVARCHAR(255),
+    product_name NVARCHAR(255),
+    description NVARCHAR(MAX),
     quantity INT NOT NULL,
-    FOREIGN KEY (cart_id) REFERENCES carts(cart_id),
-    FOREIGN KEY (product_id) REFERENCES products(product_id)
-);
-GO
-
--- Tạo bảng orders (Đơn hàng)
-CREATE TABLE orders (
-    order_id INT IDENTITY(1,1) PRIMARY KEY,
-    customer_id INT,
-    total_amount DECIMAL(10, 2) NOT NULL,
-    status NVARCHAR(50) NOT NULL,
-    created_at DATETIME DEFAULT GETDATE(),
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
-);
-GO
-
--- Tạo bảng order_items (Sản phẩm trong đơn hàng)
-CREATE TABLE order_items (
-    order_item_id INT IDENTITY(1,1) PRIMARY KEY,
-    order_id INT,
-    product_id INT,
-    quantity INT NOT NULL,
+    rental_days INT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+
+-- Thêm cột tính toán total vào bảng cart
+ALTER TABLE cart
+ADD total AS (quantity * price * rental_days) PERSISTED;
 GO
+
 
 -- Tạo bảng invoices (Hóa đơn)
 CREATE TABLE invoices (
     invoice_id INT IDENTITY(1,1) PRIMARY KEY,
-    order_id INT,
     customer_id INT,
-    amount DECIMAL(10, 2) NOT NULL,
+    full_name NVARCHAR(255),
+    email NVARCHAR(255),
+    phone NVARCHAR(20),
+    address NVARCHAR(255),
+    notes NVARCHAR(MAX),
+    total_amount DECIMAL(10, 2),
     created_at DATETIME DEFAULT GETDATE(),
-    FOREIGN KEY (order_id) REFERENCES orders(order_id),
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
 );
-GO
+
+-- Tạo bảng invoice_items (Chi tiết hóa đơn)
+CREATE TABLE invoice_items (
+    invoice_item_id INT IDENTITY(1,1) PRIMARY KEY,
+    invoice_id INT,
+    product_id INT,
+    product_name NVARCHAR(255),
+    quantity INT,
+    rental_days INT,
+    price DECIMAL(10, 2),
+    total DECIMAL(10, 2),
+    FOREIGN KEY (invoice_id) REFERENCES invoices(invoice_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
 
 -- Thêm danh mục sản phẩm
 INSERT INTO categories (name) VALUES ('May anh chuyen nghiep');
@@ -114,7 +111,11 @@ INSERT INTO products (name, description, price, image, quantity, category_id)
 VALUES ('Chan may tripod Manfrotto', 'Chan may tripod Manfrotto voi chieu cao toi da 165cm, chiu tai toi da 8kg.', 50.00, 'manfrotto_tripod.jpg', 8, 2);
 
 select *from categories
-delete  from products
+select * from products
+select * from customers
+select * from cart
+select * from invoices
+select * from invoice_items
 SINSERT INTO categories (name)
 VALUES 
 ('Electronics'),
@@ -131,15 +132,14 @@ VALUES
 ('Action Figure', 'An action figure from a popular series', 14.99, 'action_figure.jpg', 75, 4);
 
 
-UPDATE products SET image_url = 'images/1.png' WHERE product_id = 1;
-UPDATE products SET image_url = 'images/2.png' WHERE product_id = 2;
-UPDATE products SET image_url = 'images/3.jpg' WHERE product_id = 3;
-UPDATE products SET image_url = 'images/4.jpg' WHERE product_id = 4;
-UPDATE products SET image_url = 'images/5.jpg' WHERE product_id = 5;
+UPDATE products SET image_url = 'images/1.png' WHERE product_id = 42;
+UPDATE products SET image_url = 'images/2.png' WHERE product_id = 43;
+UPDATE products SET image_url = 'images/3.jpg' WHERE product_id = 44;
+UPDATE products SET image_url = 'images/4.jpg' WHERE product_id = 45;
+UPDATE products SET image_url = 'images/5.jpg' WHERE product_id = 46;
 UPDATE products SET image_url = 'images/6.jpg' WHERE product_id = 6;
 UPDATE products SET image_url = 'images/7.jpg' WHERE product_id = 7;
 UPDATE products SET image_url = 'images/8.jpg' WHERE product_id = 8;
 UPDATE products SET image_url = 'images/9.jpg' WHERE product_id = 9;
 UPDATE products SET image_url = 'images/10.jpg' WHERE product_id = 10;
-
 

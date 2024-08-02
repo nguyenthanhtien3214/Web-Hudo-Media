@@ -1,0 +1,66 @@
+﻿@model List<website.Models.CartItem>
+@{
+    ViewData["Title"] = "Cart";
+    decimal totalAmount = Model.Sum(item => item.Quantity * item.Price);
+}
+
+<h1>Giỏ Hàng</h1>
+
+@if (Model.Count == 0)
+{
+    <p>Giỏ hàng của bạn đang trống.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Hình ảnh</th>
+                <th>Số lượng</th>
+                <th>Số ngày thuê</th>
+                <th>Đơn giá</th>
+                <th>Tổng</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Product.Name</td>
+                    <td><img src="@Url.Content("~/" + item.Product.ImageUrl)" alt="@item.Product.Name" style="width: 100px; height: auto;" /></td>
+                    <td>@item.Quantity</td>
+                    <td>@item.RentalDays</td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>@(item.Quantity * item.Price)</td>
+                    <td>
+                        <form asp-action="UpdateCart" method="post" class="form-inline">
+                            <input type="hidden" name="cartItemId" value="@item.ProductId" />
+                            <div class="form-group">
+                                <input type="number" name="quantity" value="@item.Quantity" min="1" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="rentalDays" value="@item.RentalDays" min="1" max="365" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                            </div>
+                        </form>
+                        <form asp-action="RemoveFromCart" method="post" class="form-inline">
+                            <input type="hidden" name="cartItemId" value="@item.ProductId" />
+                            <button type="submit" class="btn btn-danger">Xóa</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div>
+        <strong>Tổng cộng:</strong>
+        @totalAmount.ToString("C")
+    </div>
+
+    <a href="@Url.Action("Checkout", "Home")" class="btn btn-primary">Thanh Toán</a>
+}

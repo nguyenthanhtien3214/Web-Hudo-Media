@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8jtAx6RoIOOylTzJ0GKdE9rn+zFOT51j1w+zczB5ULk=",
+  "Hash": "klp9YNRus91MxNrCF4Jco6/fNlgilPq2eJvC2HP57go=",
   "Source": "website",
   "BasePath": "_content/website",
   "Mode": "Default",
@@ -40694,6 +40694,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\fontawesome-free-6.6.0-web\\fontawesome-free-6.6.0-web\\webfonts\\fa-v4compatibility.woff2"
+    },
+    {
+      "Identity": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\product-details.css",
+      "SourceId": "website",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\HUDO\\web3\\website\\website\\wwwroot\\",
+      "BasePath": "_content/website",
+      "RelativePath": "css/product-details.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\product-details.css"
     },
     {
       "Identity": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\site.css",

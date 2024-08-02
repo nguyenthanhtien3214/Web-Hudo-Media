@@ -8561,6 +8561,10 @@
       "PackagePath": "staticwebassets\\css\\fontawesome-free-6.6.0-web\\fontawesome-free-6.6.0-web\\webfonts\\fa-v4compatibility.woff2"
     },
     {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\product-details.css",
+      "PackagePath": "staticwebassets\\css\\product-details.css"
+    },
+    {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
