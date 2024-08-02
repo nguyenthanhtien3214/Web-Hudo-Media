@@ -3,8 +3,6 @@ CREATE DATABASE camera_rental;
 USE camera_rental;
 
 
-
-
 -- Tạo bảng categories (Danh mục sản phẩm)
 CREATE TABLE categories (
     category_id INT IDENTITY(1,1) PRIMARY KEY,
@@ -18,16 +16,22 @@ CREATE TABLE products (
     name NVARCHAR(255) NOT NULL,
     description NVARCHAR(MAX),
     price DECIMAL(10, 2) NOT NULL,
-    image NVARCHAR(255),
     quantity INT NOT NULL,
     category_id INT,
     FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
 GO
 ALTER TABLE products
-ADD image_url NVARCHAR(255);
-ALTER TABLE products
 ADD CONSTRAINT UQ_products_name UNIQUE (name);
+
+-- Tạo bảng product_images (Ảnh sản phẩm)
+CREATE TABLE product_images (
+    image_id INT IDENTITY(1,1) PRIMARY KEY,
+    image_url NVARCHAR(255) NOT NULL,
+    product_id INT,
+    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
+);
+GO
 
 -- Tạo bảng customers (Khách hàng)
 CREATE TABLE customers (
@@ -54,12 +58,12 @@ CREATE TABLE cart (
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+GO
 
 -- Thêm cột tính toán total vào bảng cart
 ALTER TABLE cart
 ADD total AS (quantity * price * rental_days) PERSISTED;
 GO
-
 
 -- Tạo bảng invoices (Hóa đơn)
 CREATE TABLE invoices (
@@ -74,6 +78,7 @@ CREATE TABLE invoices (
     created_at DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
 );
+GO
 
 -- Tạo bảng invoice_items (Chi tiết hóa đơn)
 CREATE TABLE invoice_items (
@@ -88,7 +93,14 @@ CREATE TABLE invoice_items (
     FOREIGN KEY (invoice_id) REFERENCES invoices(invoice_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+GO
 
+CREATE TABLE Documents (
+    DocumentId INT IDENTITY(1,1) PRIMARY KEY,
+    Title NVARCHAR(MAX) NOT NULL,
+    Content NVARCHAR(MAX) NOT NULL,
+    FileType NVARCHAR(10) NOT NULL
+);
 
 -- Thêm danh mục sản phẩm
 INSERT INTO categories (name) VALUES ('May anh chuyen nghiep');
@@ -110,6 +122,8 @@ VALUES ('The nho SanDisk 128GB', 'The nho SanDisk 128GB voi toc do doc 170MB/s v
 INSERT INTO products (name, description, price, image, quantity, category_id)
 VALUES ('Chan may tripod Manfrotto', 'Chan may tripod Manfrotto voi chieu cao toi da 165cm, chiu tai toi da 8kg.', 50.00, 'manfrotto_tripod.jpg', 8, 2);
 
+select *from Documents
+select *from product_images
 select *from categories
 select * from products
 select * from customers

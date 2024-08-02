@@ -1,0 +1,59 @@
+﻿@model website.Models.Invoice
+
+@{
+    ViewData["Title"] = "Tra Cứu Đơn Hàng";
+}
+
+<div class="container mt-4">
+    <h1>Tra Cứu Đơn Hàng</h1>
+    <form asp-action="TrackOrder" method="get">
+        <div class="form-group">
+            <input type="text" name="invoiceId" placeholder="Nhập ID hóa đơn để tra cứu" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Tra cứu</button>
+    </form>
+
+    @if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-warning mt-4">
+            @ViewBag.Message
+        </div>
+    }
+    else if (ViewBag.Customer != null)
+    {
+        <div class="mt-4">
+            <h2>Thông tin khách hàng</h2>
+            <p><strong>Họ và tên:</strong> @ViewBag.Customer.FullName</p>
+            <p><strong>Số điện thoại:</strong> @ViewBag.Customer.Phone</p>
+            <p><strong>Địa chỉ:</strong> @ViewBag.Customer.Address</p>
+        </div>
+
+        <div class="mt-4">
+            <h2>Chi tiết đơn hàng</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Số ngày thuê</th>
+                        <th>Đơn giá</th>
+                        <th>Tổng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.OrderDetails)
+                    {
+                        <tr>
+                            <td>@item.ProductName</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.RentalDays</td>
+                            <td>@item.Price.ToString("C")</td>
+                            <td>@(item.Quantity * item.Price)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <h3>Tổng cộng: @ViewBag.TotalAmount.ToString("C")</h3>
+        </div>
+    }
+</div>

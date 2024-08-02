@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "E:\\HUDO\\web3\\website\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\models\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\models\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\views\\thutucchothue\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\views\\thutucchothue\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\controllers\\thutucchothue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\controllers\\thutucchothue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\views\\thutucchothue\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\views\\thutucchothue\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\appsettings.json",
-              "RelativeDocumentMoniker": "website\\appsettings.json",
-              "ToolTip": "E:\\HUDO\\web3\\website\\website\\appsettings.json",
-              "RelativeToolTip": "website\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-02T14:46:24.458Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EmailService.cs",
-              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\Services\\EmailService.cs",
-              "RelativeDocumentMoniker": "website\\Services\\EmailService.cs",
-              "ToolTip": "E:\\HUDO\\web3\\website\\website\\Services\\EmailService.cs",
-              "RelativeToolTip": "website\\Services\\EmailService.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAA2wCkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T14:41:53.245Z",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\Views\\ThuTucChoThue\\Index.cshtml",
+              "RelativeDocumentMoniker": "website\\Views\\ThuTucChoThue\\Index.cshtml",
+              "ToolTip": "E:\\HUDO\\web3\\website\\website\\Views\\ThuTucChoThue\\Index.cshtml",
+              "RelativeToolTip": "website\\Views\\ThuTucChoThue\\Index.cshtml",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAB4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-02T19:06:09.8Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "website\\Controllers\\HomeController.cs",
-              "ToolTip": "E:\\HUDO\\web3\\website\\website\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "website\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAANAAAAAAAAAAAADwv+kAAAAAAAAA",
+              "Title": "Document.cs",
+              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\Models\\Document.cs",
+              "RelativeDocumentMoniker": "website\\Models\\Document.cs",
+              "ToolTip": "E:\\HUDO\\web3\\website\\website\\Models\\Document.cs",
+              "RelativeToolTip": "website\\Models\\Document.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T12:45:51.664Z",
+              "WhenOpened": "2024-08-02T18:43:12.23Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\Views\\ThuTucChoThue\\Edit.cshtml",
+              "RelativeDocumentMoniker": "website\\Views\\ThuTucChoThue\\Edit.cshtml",
+              "ToolTip": "E:\\HUDO\\web3\\website\\website\\Views\\ThuTucChoThue\\Edit.cshtml",
+              "RelativeToolTip": "website\\Views\\ThuTucChoThue\\Edit.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-02T18:27:30.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ThuTucChoThue.cs",
+              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\Controllers\\ThuTucChoThue.cs",
+              "RelativeDocumentMoniker": "website\\Controllers\\ThuTucChoThue.cs",
+              "ToolTip": "E:\\HUDO\\web3\\website\\website\\Controllers\\ThuTucChoThue.cs",
+              "RelativeToolTip": "website\\Controllers\\ThuTucChoThue.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T18:19:28.579Z",
               "EditorCaption": ""
             }
           ]

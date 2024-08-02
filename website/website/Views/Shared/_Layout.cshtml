@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="~/lib/bootstrap-4.0.0-dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/website.styles.css" asp-append-version="true" />
-    <!-- Liên kết đến tệp CSS của Font Awesome đã tải về -->
     <link rel="stylesheet" href="~/css/fontawesome-free-6.6.0-web/fontawesome-free-6.6.0-web/css/all.min.css" />
     @RenderSection("Styles", required: false)
 </head>
@@ -19,11 +18,13 @@
             </div>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="#">Trang Chủ</a></li>
+                    <li class="nav-item"><a href="@Url.Action("Index", "Home")">Trang Chủ</a></li>
                     <li class="nav-item"><a href="#">Giới Thiệu</a></li>
-                    <li class="nav-item"><a href="#">Dịch Vụ</a></li>
-                    <li class="nav-item"><a href="#">Thủ Tục Thuê</a></li>
+                    <li class="nav-item"><a href="@Url.Action("DichVuThue", "Home")">Dịch Vụ</a></li>
+                    <li class="nav-item"><a href="@Url.Action("Index", "ThuTucChoThue")">Thủ Tục Cho Thuê</a></li>
                     <li class="nav-item"><a href="#">Liên Hệ</a></li>
+                    <li class="nav-item"><a href="@Url.Action("TrackOrder", "Home")">Tra Cứu</a></li>
+                    </li>
                 </ul>
             </nav>
             <div class="cart">

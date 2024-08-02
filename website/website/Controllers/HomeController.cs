@@ -46,7 +46,9 @@ namespace website.Controllers
             int pageNumber = page ?? 1;
             int pageSize = 10; // Số lượng sản phẩm trên mỗi trang
 
-            var products = _context.Products.ToPagedList(pageNumber, pageSize);
+            var products = _context.Products
+                .Include(p => p.Images) // Đảm bảo bao gồm hình ảnh
+                .ToPagedList(pageNumber, pageSize);
 
             var model = new ProductViewModel
             {
@@ -59,8 +61,11 @@ namespace website.Controllers
         public IActionResult ProductsCard(int id)
         {
             UpdateCartCount();
+
+            // Nạp sản phẩm cùng với ảnh và danh mục
             var product = _context.Products
-                .Include(p => p.Category)
+                .Include(p => p.Images) // Nạp ảnh liên quan đến sản phẩm
+                .Include(p => p.Category) // Nạp danh mục liên quan
                 .FirstOrDefault(p => p.ProductId == id);
 
             if (product == null)
@@ -82,7 +87,7 @@ namespace website.Controllers
             var product = _context.Products.FirstOrDefault(p => p.ProductId == productId);
             if (product == null)
             {
-                return NotFound();
+                return Json(new { success = false, message = "Product not found" });
             }
 
             List<CartItem> cart = new List<CartItem>();
@@ -118,21 +123,50 @@ namespace website.Controllers
             };
             Response.Cookies.Append("Cart", updatedCart, options);
 
-            return RedirectToAction("Cart");
+            UpdateCartCount();
+            return Json(new { success = true, message = "Thêm vào giỏ hàng thành công", cartCount = cart.Count });
         }
 
         [HttpPost]
         public IActionResult UpdateCart(int cartItemId, int quantity, int rentalDays)
         {
-            var cartItem = _context.CartItems.FirstOrDefault(ci => ci.CartItemId == cartItemId);
+            var product = _context.Products.FirstOrDefault(p => p.ProductId == cartItemId);
+            if (product == null)
+            {
+                return Json(new { success = false, message = "Product not found" });
+            }
+
+            if (quantity > product.Quantity)
+            {
+                return Json(new { success = false, message = $"Số lượng tồn kho không đủ. Chỉ còn {product.Quantity} sản phẩm." });
+            }
+
+            List<CartItem> cart = new List<CartItem>();
+            string cartCookie = Request.Cookies["Cart"];
+
+            if (!string.IsNullOrEmpty(cartCookie))
+            {
+                cart = JsonConvert.DeserializeObject<List<CartItem>>(cartCookie);
+            }
+
+            var cartItem = cart.FirstOrDefault(ci => ci.ProductId == cartItemId);
             if (cartItem != null)
             {
                 cartItem.Quantity = quantity;
                 cartItem.RentalDays = rentalDays;
-                _context.SaveChanges();
+
+                string updatedCart = JsonConvert.SerializeObject(cart);
+                CookieOptions options = new CookieOptions
+                {
+                    Expires = DateTime.Now.AddDays(7)
+                };
+                Response.Cookies.Append("Cart", updatedCart, options);
+
+                UpdateCartCount();
+                return Json(new { success = true, message = "Giỏ hàng đã được cập nhật thành công", cartCount = cart.Count });
             }
 
-            return RedirectToAction("Cart");
+            return Json(new { success = false, message = "Không tìm thấy mục giỏ hàng" });
         }
 
         public IActionResult Cart()
@@ -143,6 +177,20 @@ namespace website.Controllers
             if (!string.IsNullOrEmpty(cartCookie))
             {
                 cart = JsonConvert.DeserializeObject<List<CartItem>>(cartCookie);
+
+                // Nạp thông tin sản phẩm từ cơ sở dữ liệu
+                foreach (var item in cart)
+                {
+                    var product = _context.Products
+                        .Include(p => p.Images) // Nạp ảnh sản phẩm
+                        .Include(p => p.Category) // Nạp danh mục sản phẩm
+                        .FirstOrDefault(p => p.ProductId == item.ProductId);
+
+                    if (product != null)
+                    {
+                        item.Product = product;
+                    }
+                }
             }
 
             return View(cart);
@@ -158,9 +206,11 @@ namespace website.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Thêm thông tin khách hàng vào cơ sở dữ liệu
                 _context.Customers.Add(customer);
                 _context.SaveChanges();
 
+                // Lấy giỏ hàng từ cookie
                 var cartCookie = Request.Cookies["Cart"];
                 List<CartItem> cartItems = new List<CartItem>();
 
@@ -169,6 +219,7 @@ namespace website.Controllers
                     cartItems = JsonConvert.DeserializeObject<List<CartItem>>(cartCookie);
                 }
 
+                // Tạo hóa đơn mới
                 var invoice = new Invoice
                 {
                     CustomerId = customer.CustomerId,
@@ -184,6 +235,7 @@ namespace website.Controllers
                 _context.Invoices.Add(invoice);
                 _context.SaveChanges();
 
+                // Thêm các mục vào hóa đơn
                 foreach (var item in cartItems)
                 {
                     var invoiceItem = new InvoiceItem
@@ -205,6 +257,7 @@ namespace website.Controllers
                 // Gửi email xác nhận
                 var emailBody = new StringBuilder();
                 emailBody.AppendLine("<h1>Hóa đơn của bạn</h1>");
+                emailBody.AppendLine($"<p>Hóa đơn ID: {invoice.InvoiceId}</p>");
                 emailBody.AppendLine($"<p>Họ và tên: {customer.FullName}</p>");
                 emailBody.AppendLine($"<p>Email: {customer.Email}</p>");
                 emailBody.AppendLine($"<p>Phone: {customer.Phone}</p>");
@@ -231,6 +284,7 @@ namespace website.Controllers
 
             return View(customer);
         }
+
 
 
         private void UpdateCartCount()
@@ -272,6 +326,51 @@ namespace website.Controllers
 
             return RedirectToAction("Cart");
         }
+
+
+        public IActionResult TrackOrder(string invoiceId)
+        {
+            if (string.IsNullOrEmpty(invoiceId))
+            {
+                return View();
+            }
+
+            // Tìm hóa đơn và các chi tiết của hóa đơn
+            var invoice = _context.Invoices
+                .Include(i => i.InvoiceItems)
+                .ThenInclude(ii => ii.Product)
+                .FirstOrDefault(i => i.InvoiceId.ToString() == invoiceId);
+
+            if (invoice == null)
+            {
+                ViewBag.Message = "Không tìm thấy hóa đơn với ID đã nhập.";
+                ViewBag.OrderDetails = null;
+                ViewBag.TotalAmount = 0;
+                ViewBag.Customer = null;
+            }
+            else
+            {
+                ViewBag.Message = null;
+                ViewBag.OrderDetails = invoice.InvoiceItems.Select(ii => new
+                {
+                    ii.ProductName,
+                    ii.Quantity,
+                    ii.RentalDays,
+                    ii.Price
+                }).ToList();
+                ViewBag.TotalAmount = invoice.TotalAmount;
+                ViewBag.Customer = new
+                {
+                    FullName = invoice.FullName,
+                    Phone = invoice.Phone,
+                    Address = invoice.Address
+                };
+            }
+
+            return View();
+        }
+
+
 
     }
 }

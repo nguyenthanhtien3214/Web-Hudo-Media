@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace website.Models
@@ -12,22 +13,16 @@ namespace website.Models
 
         [Required(ErrorMessage = "Vui lòng nhập tên sản phẩm.")]
         [Column("name")]
-        public string Name { get; set; } = string.Empty; // Khởi tạo với giá trị mặc định
+        public string Name { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Vui lòng nhập mô tả sản phẩm.")]
         [Column("description")]
-        public string Description { get; set; } = string.Empty; // Khởi tạo với giá trị mặc định
+        public string Description { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Vui lòng nhập giá sản phẩm.")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Giá sản phẩm phải lớn hơn 0.")]
         [Column("price")]
         public decimal Price { get; set; }
-
-        [Column("image")]
-        public string? Image { get; set; } // Đánh dấu nullable
-
-        [Column("image_url")]
-        public string? ImageUrl { get; set; } // Đánh dấu nullable
 
         [Required(ErrorMessage = "Vui lòng nhập số lượng sản phẩm.")]
         [Range(1, int.MaxValue, ErrorMessage = "Số lượng sản phẩm phải lớn hơn 0.")]
@@ -39,6 +34,8 @@ namespace website.Models
         public int CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]
-        public Category? Category { get; set; } // Đánh dấu nullable
+        public Category Category { get; set; }
+
+        public ICollection<ProductImage> Images { get; set; } = new List<ProductImage>();
     }
 }

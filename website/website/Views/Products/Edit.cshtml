@@ -52,14 +52,18 @@
         <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label class="control-label">Upload Image</label>
-        <input type="file" name="file" class="form-control" required />
-        <span class="text-danger" asp-validation-for="ImageUrl"></span>
+        <label class="control-label">Upload Images</label>
+        <input type="file" name="files" class="form-control" multiple />
     </div>
     <div class="form-group">
-        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        @if (Model.Images != null && Model.Images.Any())
         {
-            <img src="~/@Model.ImageUrl" alt="@Model.Name" style="width: 100px; height: auto;" />
+            <div class="existing-images">
+                @foreach (var image in Model.Images)
+                {
+                    <img src="~/@image.ImageUrl" alt="@Model.Name" style="width: 100px; height: auto; margin: 5px;" />
+                }
+            </div>
         }
     </div>
     <div class="form-group">

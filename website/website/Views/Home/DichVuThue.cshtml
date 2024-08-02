@@ -1,4 +1,5 @@
-﻿@model website.Models.ProductViewModel
+﻿@using X.Web.PagedList
+@model website.Models.ProductViewModel
 
 @{
     ViewData["Title"] = "Dịch Vụ Thuê";
@@ -11,7 +12,14 @@
             <div class="product__photo">
                 <div class="photo-container">
                     <div class="photo-main">
-                        <img src="@product.ImageUrl" alt="@product.Name">
+                        @if (product.Images != null && product.Images.Any())
+                        {
+                            <img src="@Url.Content($"~/{product.Images.First().ImageUrl}")" alt="@product.Name" />
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("~/images/default-image.jpg")" alt="No Image Available" />
+                        }
                     </div>
                 </div>
             </div>
@@ -31,6 +39,7 @@
 <div class="d-flex justify-content-center">
     @Html.PagedListPager(Model.Products, page => Url.Action("DichVuThue", new { page }))
 </div>
+
 
 <style>
     /* ----- Variables ----- */

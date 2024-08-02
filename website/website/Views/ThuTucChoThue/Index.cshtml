@@ -1,0 +1,30 @@
+﻿@model website.Models.Document
+
+@{
+    ViewData["Title"] = "Document Viewer";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (Model != null)
+{
+    <div>
+        <h3>@Model.Title</h3>
+        <p>@Model.Content</p>
+
+        @if (ViewData["DocumentContent"] != null)
+        {
+            <div>
+                @Html.Raw(ViewData["DocumentContent"])
+            </div>
+        }
+        else
+        {
+            <p>Chưa cập nhật hợp đồng thuê.</p>
+        }
+    </div>
+}
+else
+{
+    <p>Chưa cập nhật hợp đồng thuê.</p>
+}

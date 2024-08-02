@@ -50,6 +50,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Aspose.PDF": {
+              "target": "Package",
+              "version": "[24.7.0, )"
+            },
+            "Aspose.Words": {
+              "target": "Package",
+              "version": "[24.7.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.7, )"
@@ -68,7 +76,7 @@
             },
             "X.PagedList.Mvc.Core": {
               "target": "Package",
-              "version": "[10.0.3, )"
+              "version": "[10.1.2, )"
             }
           },
           "imports": [

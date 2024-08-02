@@ -1,4 +1,5 @@
 ﻿@model List<website.Models.CartItem>
+
 @{
     ViewData["Title"] = "Cart";
     decimal totalAmount = Model.Sum(item => item.Quantity * item.Price);
@@ -29,25 +30,27 @@ else
             {
                 <tr>
                     <td>@item.Product.Name</td>
-                    <td><img src="@Url.Content("~/" + item.Product.ImageUrl)" alt="@item.Product.Name" style="width: 100px; height: auto;" /></td>
-                    <td>@item.Quantity</td>
-                    <td>@item.RentalDays</td>
+                    <td>
+                        @if (item.Product.Images != null && item.Product.Images.Any())
+                        {
+                            <img src="@Url.Content($"~/{item.Product.Images.First().ImageUrl}")" alt="@item.Product.Name" style="width: 100px; height: auto;" />
+                        }
+                        else
+                        {
+                            <img src="~/images/default-image.jpg" alt="No Image Available" style="width: 100px; height: auto;" />
+                        }
+                    </td>
+                    <td>
+                        <input type="number" id="quantity-@item.ProductId" value="@item.Quantity" min="1" class="form-control" />
+                    </td>
+                    <td>
+                        <input type="number" id="rentalDays-@item.ProductId" value="@item.RentalDays" min="1" max="365" class="form-control" />
+                    </td>
                     <td>@item.Price.ToString("C")</td>
                     <td>@(item.Quantity * item.Price)</td>
                     <td>
-                        <form asp-action="UpdateCart" method="post" class="form-inline">
-                            <input type="hidden" name="cartItemId" value="@item.ProductId" />
-                            <div class="form-group">
-                                <input type="number" name="quantity" value="@item.Quantity" min="1" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <input type="number" name="rentalDays" value="@item.RentalDays" min="1" max="365" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Cập nhật</button>
-                            </div>
-                        </form>
-                        <form asp-action="RemoveFromCart" method="post" class="form-inline">
+                        <button onclick="updateCart(@item.ProductId)" class="btn btn-primary">Cập nhật</button>
+                        <form asp-action="RemoveFromCart" method="post" class="form-inline" style="display:inline;">
                             <input type="hidden" name="cartItemId" value="@item.ProductId" />
                             <button type="submit" class="btn btn-danger">Xóa</button>
                         </form>
@@ -64,3 +67,34 @@ else
 
     <a href="@Url.Action("Checkout", "Home")" class="btn btn-primary">Thanh Toán</a>
 }
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function updateCart(productId) {
+        var quantity = $('#quantity-' + productId).val();
+        var rentalDays = $('#rentalDays-' + productId).val();
+
+        $.ajax({
+            url: '@Url.Action("UpdateCart", "Home")',
+            type: 'POST',
+            data: {
+                cartItemId: productId,
+                quantity: quantity,
+                rentalDays: rentalDays
+            },
+            success: function (response) {
+                if (response.success) {
+                    alert(response.message);
+                    // Cập nhật số lượng giỏ hàng trên icon giỏ hàng
+                    $('.cart-count').text(response.cartCount);
+                    location.reload(); // Tải lại trang để cập nhật tổng cộng
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function () {
+                alert('Có lỗi xảy ra, vui lòng thử lại.');
+            }
+        });
+    }
+</script>

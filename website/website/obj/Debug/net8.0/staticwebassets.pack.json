@@ -8573,18 +8573,6 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\1.png",
-      "PackagePath": "staticwebassets\\images\\1.png"
-    },
-    {
-      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\10.jpg",
-      "PackagePath": "staticwebassets\\images\\10.jpg"
-    },
-    {
-      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\2.png",
-      "PackagePath": "staticwebassets\\images\\2.png"
-    },
-    {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\3.jpg",
       "PackagePath": "staticwebassets\\images\\3.jpg"
     },
@@ -8603,14 +8591,6 @@
     {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\7.jpg",
       "PackagePath": "staticwebassets\\images\\7.jpg"
-    },
-    {
-      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\8.jpg",
-      "PackagePath": "staticwebassets\\images\\8.jpg"
-    },
-    {
-      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\9.jpg",
-      "PackagePath": "staticwebassets\\images\\9.jpg"
     },
     {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\cart.png",
@@ -8755,6 +8735,10 @@
     {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\uploads\\a.docx",
+      "PackagePath": "staticwebassets\\uploads\\a.docx"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.website.props",
