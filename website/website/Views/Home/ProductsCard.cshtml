@@ -3,35 +3,51 @@
 @{
     ViewData["Title"] = "Product Details";
 }
-<link rel="stylesheet" href="~/css/product-details.css" />
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/ProductsCard.css" asp-append-version="true" />
+}
 
 <h1>@Model.Name</h1>
 
 <div class="product-detail">
     <div class="product-detail__photo">
-        @if (Model.Images != null && Model.Images.Any())
-        {
-            foreach (var image in Model.Images)
+        <img id="mainImage" src="@Url.Content($"~/{Model.Images.FirstOrDefault()?.ImageUrl}")" alt="@Model.Name" style="max-width: 100%; height: auto; margin-bottom: 10px;" />
+        <div class="product-detail__thumbnails">
+            @if (Model.Images != null && Model.Images.Any())
             {
-                <img src="@Url.Content($"~/{image.ImageUrl}")" alt="@Model.Name" style="max-width: 100%; height: auto; margin-bottom: 10px;" />
+                foreach (var image in Model.Images)
+                {
+                    <img class="thumbnail" src="@Url.Content($"~/{image.ImageUrl}")" alt="@Model.Name" style="width: 100px; height: auto; margin-right: 10px; cursor: pointer;" />
+                }
             }
-        }
-        else
-        {
-            <p>No images available for this product.</p>
-        }
+        </div>
     </div>
     <div class="product-detail__info">
         <p><strong>Danh mục:</strong> @Model.Category?.Name</p>
         <p><strong>Mô tả:</strong> @Model.Description</p>
-        <p><strong>Giá:</strong> @Model.Price.ToString("C")</p>
-        <p><strong>Số lượng:</strong> <input type="number" id="quantity" value="1" min="1" class="form-control" /></p>
-        <p><strong>Số ngày thuê:</strong> <input type="number" id="rentalDays" value="1" min="1" max="365" class="form-control" /></p>
-        <button onclick="addToCart(@Model.ProductId)" class="btn btn-primary">Thêm vào giỏ</button>
+        <p class="product-price"><strong>Giá:</strong> @Model.Price.ToString("C")</p>
+
+        @if (Model.Quantity > 0)
+        {
+            <p><strong>Số lượng:</strong> <input type="number" id="quantity" value="1" min="1" max="@Model.Quantity" class="form-control" /></p>
+            <p><strong>Số ngày thuê:</strong> <input type="number" id="rentalDays" value="1" min="1" max="365" class="form-control" /></p>
+            <button onclick="addToCart(@Model.ProductId)" class="btn btn-primary">Thêm vào giỏ</button>
+        }
+        else
+        {
+            <p><strong>Trạng thái:</strong> <span style="color: red;">Đang hết hàng</span></p>
+            <button class="btn btn-secondary" disabled>Đang hết hàng</button>
+        }
     </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<div id="productImages" data-images='@Html.Raw(Json.Serialize(Model.Images.Select(i => Url.Content($"~/{i.ImageUrl}")).ToArray()))'></div>
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/js/ProductsCard.js" asp-append-version="true"></script>
+}
 <script>
     function addToCart(productId) {
         var quantity = $('#quantity').val();

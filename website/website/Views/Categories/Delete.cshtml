@@ -1,0 +1,55 @@
+﻿@model website.Models.Category
+
+@{
+    Layout = "~/Views/Products/_LayoutQuanLy.cshtml";
+    ViewData["Title"] = "Delete Category";
+}
+
+<h1>Delete Category</h1>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Category</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+
+    <form asp-action="DeleteConfirmed" method="post" id="deleteForm">
+        <input type="hidden" name="id" value="@Model.CategoryId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("deleteForm").onsubmit = function (event) {
+            const formData = new FormData(this);
+            for (let [key, value] of formData.entries()) {
+                console.log(key, value);
+            }
+
+            // Hiển thị hộp thoại xác nhận
+            var confirmation = confirm("Are you sure you want to delete this category?");
+            if (!confirmation) {
+                event.preventDefault(); // Hủy việc submit form nếu người dùng chọn "Cancel"
+            }
+        };
+    </script>
+}

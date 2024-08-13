@@ -48,12 +48,19 @@
                             <td>@item.Quantity</td>
                             <td>@item.RentalDays</td>
                             <td>@item.Price.ToString("C")</td>
-                            <td>@(item.Quantity * item.Price)</td>
+                            <td>@(item.Quantity * item.Price).ToString("C")</td>
                         </tr>
                     }
                 </tbody>
             </table>
             <h3>Tổng cộng: @ViewBag.TotalAmount.ToString("C")</h3>
+        </div>
+
+        <div class="mt-4">
+            <h2>Thông tin thêm về đơn hàng</h2>
+            <p><strong>Ngày bắt đầu thuê:</strong> @ViewBag.RentalStartDate</p>
+            <p><strong>Ngày kết thúc thuê:</strong> @ViewBag.RentalEndDate</p>
+            <p><strong>Trạng thái:</strong> <span style="color: red; font-weight: bold;">@ViewBag.Status</span></p>
         </div>
     }
 </div>

@@ -9,15 +9,17 @@ namespace website.Models
         [Column("customer_id")]
         public int CustomerId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập họ tên.")]
         [Column("full_name")]
         public string FullName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập email.")]
+        [EmailAddress(ErrorMessage = "Định dạng email không hợp lệ.")]
         [Column("email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập số điện thoại.")]
+        [Phone(ErrorMessage = "Định dạng số điện thoại không hợp lệ.")]
         [Column("phone")]
         public string Phone { get; set; }
 

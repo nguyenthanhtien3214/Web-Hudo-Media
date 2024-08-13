@@ -5,6 +5,9 @@
     ViewData["Title"] = "Dịch Vụ Thuê";
 }
 
+@section Styles {
+    <link rel="stylesheet" href="~/css/DichVuThue.css" asp-append-version="true" />
+}
 <section class="product-list">
     @foreach (var product in Model.Products)
     {
@@ -36,137 +39,54 @@
     }
 </section>
 
-<div class="d-flex justify-content-center">
-    @Html.PagedListPager(Model.Products, page => Url.Action("DichVuThue", new { page }))
-</div>
-
-
-<style>
-    /* ----- Variables ----- */
-    :root {
-        --color-primary: #4c4c4c;
-        --color-secondary: #a6a6a6;
-        --color-highlight: #ff3f40;
-    }
-
-    /* ----- Global ----- */
-    * {
-        box-sizing: border-box;
-    }
-
-    html,
-    body {
-        height: 100%;
-    }
-
-    body {
-        display: grid;
-        grid-template-rows: 1fr;
-        font-family: "Raleway", sans-serif;
-    }
-
-    h3 {
-        font-size: 0.7em;
-        letter-spacing: 1.2px;
-        color: var(--color-secondary);
-    }
-
-    img {
-        max-width: 100%;
-        filter: drop-shadow(1px 1px 3px var(--color-secondary));
-    }
-
-    /* ----- Product Section ----- */
-    .product-list {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-        padding: 2.5em;
-    }
-
-    .product {
-        display: flex;
-        flex-direction: column;
-        width: 270px;
-        height: 400px; /* Reduced height */
-        background-color: white;
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-    }
-
-    /* ----- Photo Section ----- */
-    .product__photo {
-        position: relative;
-        height: 250px;
-        margin-left: -15px; /* Increased left shift */
-    }
-
-    .photo-container {
-        position: relative;
-        width: calc(100% + 30px); /* Extend width to balance the left shift */
-        height: 100%;
-        overflow: hidden;
-    }
-
-    .photo-main {
-        width: 100%;
-        height: 100%;
-        background-color: #9be010;
-        background: radial-gradient(#e5f89e, #96e001);
-    }
-
-        .photo-main img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: saturate(150%) contrast(120%) hue-rotate(10deg);
-            border-radius: 10px; /* Rounded corners for the image */
-            transform: translateX(-15px); /* Shift image to the left */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Added shadow to the image */
+<nav class="page-navigation" aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @if (Model.Products.HasPreviousPage)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="DichVuThue" asp-route-page="@(Model.Products.PageNumber - 1)" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item disabled">
+                <span class="page-link">&laquo;</span>
+            </li>
         }
 
-    /* ----- Informations Section ----- */
-    .product__info {
-        padding: 1em;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
-
-    .title h1 {
-        margin-bottom: 0.1em;
-        color: var(--color-primary);
-        font-size: 1em;
-        font-weight: 900;
-    }
-
-    .price {
-        margin: 0.5em 0;
-        color: var(--color-highlight);
-        font-size: 1em;
-    }
-
-    .buy--btn {
-        margin-top: auto;
-        padding: 0.8em 1.5em;
-        border: none;
-        border-radius: 7px;
-        font-size: 0.8em;
-        font-weight: 700;
-        letter-spacing: 1.3px;
-        color: #fff;
-        background-color: var(--color-highlight);
-        box-shadow: 2px 2px 25px -7px var(--color-primary);
-        cursor: pointer;
-    }
-
-        .buy--btn:active {
-            transform: scale(0.97);
+        @for (var i = 1; i <= Model.Products.PageCount; i++)
+        {
+            if (i == Model.Products.PageNumber)
+            {
+                <li class="page-item active">
+                    <span class="page-link">@i</span>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-action="DichVuThue" asp-route-page="@i">@i</a>
+                </li>
+            }
         }
 
-    .d-flex {
-        display: flex;
-        justify-content: center;
-    }
-</style>
+        @if (Model.Products.HasNextPage)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="DichVuThue" asp-route-page="@(Model.Products.PageNumber + 1)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item disabled">
+                <span class="page-link">&raquo;</span>
+            </li>
+        }
+    </ul>
+</nav>
+
+

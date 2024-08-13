@@ -60,7 +60,7 @@
                     <td>
                         @if (item.Images != null && item.Images.Any())
                         {
-                            <img src="~/@item.Images.FirstOrDefault().ImageUrl" alt="@item.Name" style="width: 100px; height: auto;" />
+                            <img src="@Url.Content("~/" + item.Images.FirstOrDefault().ImageUrl)" alt="@item.Name" style="width: 100px; height: auto;" />
                         }
                         else
                         {
@@ -72,7 +72,7 @@
                         {
                             @foreach (var image in item.Images)
                             {
-                                <img src="~/@image.ImageUrl" alt="@item.Name" style="width: 100px; height: auto;" />
+                                <img src="@Url.Content("~/" + image.ImageUrl)" alt="@item.Name" style="width: 100px; height: auto;" />
                             }
                         }
                         else

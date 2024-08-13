@@ -1,0 +1,32 @@
+﻿@model IEnumerable<website.Models.ProductImage>
+
+@{
+    ViewData["Title"] = "Delete Product Images";
+}
+
+<h2>Delete Product Images</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var image in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/@image.ImageUrl" alt="Product Image" style="max-width: 150px;" />
+                </td>
+                <td>
+                    <form asp-action="Delete" asp-controller="ProductImages" method="post">
+                        <input type="hidden" name="id" value="@image.ImageId" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

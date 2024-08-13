@@ -1,0 +1,114 @@
+﻿/* Cart.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+h1 {
+    color: #6c757d;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+    .table th {
+        background-color: #343a40;
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .table td {
+        padding: 15px;
+        text-align: center;
+        vertical-align: middle;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+        .table td img {
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+    .table input[type="number"] {
+        width: 60px;
+        text-align: center;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        padding: 5px;
+        font-size: 1rem;
+        color: #495057;
+        background-color: #e9ecef;
+    }
+
+    .table .btn {
+        font-size: 0.875rem;
+        font-weight: bold;
+        padding: 10px 15px;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+    }
+
+    .table .btn-primary {
+        background-color: #28a745;
+        border-color: #28a745;
+        color: #fff;
+    }
+
+        .table .btn-primary:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+    .table .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: #fff;
+    }
+
+        .table .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+div strong,
+div strong + span {
+    font-size: 1.25rem;
+    color: #dc3545; /* Màu đỏ */
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.3);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+        box-shadow: 0 0 25px rgba(0, 123, 255, 0.5);
+    }

@@ -1,0 +1,91 @@
+﻿body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.product-detail {
+    display: flex;
+    padding: 30px;
+    background: #ffffff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    max-width: 1200px;
+    margin: 40px auto;
+    line-height: 1.6;
+}
+
+.product-detail__photo {
+    flex: 1;
+    margin-right: 25px;
+}
+
+    .product-detail__photo img {
+        border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .product-detail__photo img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+.product-detail__thumbnails {
+    display: flex;
+    margin-top: 15px;
+}
+
+    .product-detail__thumbnails img {
+        width: 90px;
+        margin-right: 12px;
+        cursor: pointer;
+        border-radius: 8px;
+        border: 2px solid transparent;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .product-detail__thumbnails img:hover {
+            border-color: #6c63ff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+.product-detail__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f7f7ff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+    .product-detail__info p {
+        margin: 10px 0;
+        color: #555;
+    }
+
+        .product-detail__info p strong {
+            color: #333;
+            font-weight: 600;
+        }
+
+    .product-detail__info .product-price {
+        color: #e74c3c;
+        font-size: 1.8em;
+        font-weight: bold;
+    }
+
+    .product-detail__info button {
+        padding: 12px 25px;
+        border-radius: 8px;
+        background: linear-gradient(to right, #6c63ff, #3b3b98);
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+        .product-detail__info button:hover {
+            background: linear-gradient(to right, #3b3b98, #27275d);
+            transform: scale(1.05);
+        }

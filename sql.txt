@@ -21,6 +21,7 @@ CREATE TABLE products (
     FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
 GO
+
 ALTER TABLE products
 ADD CONSTRAINT UQ_products_name UNIQUE (name);
 
@@ -79,6 +80,12 @@ CREATE TABLE invoices (
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
 );
 GO
+ALTER TABLE invoices
+ADD rental_start_date DATE,
+    rental_end_date DATE,
+    status NVARCHAR(50) DEFAULT 'Chưa xác nhận';
+GO
+
 
 -- Tạo bảng invoice_items (Chi tiết hóa đơn)
 CREATE TABLE invoice_items (
@@ -95,12 +102,16 @@ CREATE TABLE invoice_items (
 );
 GO
 
+
 CREATE TABLE Documents (
     DocumentId INT IDENTITY(1,1) PRIMARY KEY,
     Title NVARCHAR(MAX) NOT NULL,
     Content NVARCHAR(MAX) NOT NULL,
     FileType NVARCHAR(10) NOT NULL
 );
+ALTER TABLE Documents
+ALTER COLUMN FileType NVARCHAR(255) NOT NULL;
+
 
 -- Thêm danh mục sản phẩm
 INSERT INTO categories (name) VALUES ('May anh chuyen nghiep');
@@ -122,13 +133,15 @@ VALUES ('The nho SanDisk 128GB', 'The nho SanDisk 128GB voi toc do doc 170MB/s v
 INSERT INTO products (name, description, price, image, quantity, category_id)
 VALUES ('Chan may tripod Manfrotto', 'Chan may tripod Manfrotto voi chieu cao toi da 165cm, chiu tai toi da 8kg.', 50.00, 'manfrotto_tripod.jpg', 8, 2);
 
+
+
 select *from Documents
 select *from product_images
 select *from categories
 select * from products
 select * from customers
-select * from cart
 select * from invoices
+select * from cart
 select * from invoice_items
 SINSERT INTO categories (name)
 VALUES 

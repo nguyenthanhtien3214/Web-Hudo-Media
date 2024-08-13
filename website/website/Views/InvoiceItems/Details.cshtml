@@ -1,0 +1,61 @@
+﻿@model IEnumerable<website.Models.InvoiceItem>
+
+@{
+    Layout = "~/Views/Shared/_LayoutQuanLy.cshtml";
+    ViewData["Title"] = "Chi tiết hóa đơn";
+}
+
+<h2>Chi tiết hóa đơn</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Tổng</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.Price.ToString("C")</td>
+                <td>
+                    <form asp-action="UpdateQuantity" method="post" style="display:inline;">
+                        <input type="hidden" name="invoiceItemId" value="@item.InvoiceItemId" />
+                        <input type="number" name="quantity" value="@item.Quantity" class="form-control d-inline" min="1" style="width: 80px;" />
+                        <button type="submit" class="btn btn-primary mt-2">Cập nhật</button>
+                    </form>
+                </td>
+                <td>@item.Total.ToString("C")</td>
+                <td>
+                    <form asp-action="DeleteItem" method="post" style="display:inline;">
+                        <input type="hidden" name="invoiceItemId" value="@item.InvoiceItemId" />
+                        <button type="submit" class="btn btn-danger mt-2">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Trở về danh sách</a>
+</div>

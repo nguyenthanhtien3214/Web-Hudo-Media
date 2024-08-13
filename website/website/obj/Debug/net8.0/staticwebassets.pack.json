@@ -5,6 +5,22 @@
       "PackagePath": "staticwebassets\\website.bundle.scp.css"
     },
     {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\Cart.css",
+      "PackagePath": "staticwebassets\\css\\Cart.css"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\Checkout.css",
+      "PackagePath": "staticwebassets\\css\\Checkout.css"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\DichVuThue.css",
+      "PackagePath": "staticwebassets\\css\\DichVuThue.css"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\ProductsCard.css",
+      "PackagePath": "staticwebassets\\css\\ProductsCard.css"
+    },
+    {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\fontawesome-free-6.6.0-web\\fontawesome-free-6.6.0-web\\LICENSE.txt",
       "PackagePath": "staticwebassets\\css\\fontawesome-free-6.6.0-web\\fontawesome-free-6.6.0-web\\LICENSE.txt"
     },
@@ -8573,6 +8589,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\11.jpg",
+      "PackagePath": "staticwebassets\\images\\11.jpg"
+    },
+    {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\3.jpg",
       "PackagePath": "staticwebassets\\images\\3.jpg"
     },
@@ -8593,6 +8613,38 @@
       "PackagePath": "staticwebassets\\images\\7.jpg"
     },
     {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\cannon0001.jpeg",
+      "PackagePath": "staticwebassets\\images\\cannon0001.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\cannon0002.jpeg",
+      "PackagePath": "staticwebassets\\images\\cannon0002.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\cannon001.png",
+      "PackagePath": "staticwebassets\\images\\cannon001.png"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\cannon002.jpeg",
+      "PackagePath": "staticwebassets\\images\\cannon002.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\cannon01.png",
+      "PackagePath": "staticwebassets\\images\\cannon01.png"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\cannon02.jpeg",
+      "PackagePath": "staticwebassets\\images\\cannon02.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\cannon1.jpeg",
+      "PackagePath": "staticwebassets\\images\\cannon1.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\cannon2.jpeg",
+      "PackagePath": "staticwebassets\\images\\cannon2.jpeg"
+    },
+    {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\cart.png",
       "PackagePath": "staticwebassets\\images\\cart.png"
     },
@@ -8603,6 +8655,134 @@
     {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\logo.png",
       "PackagePath": "staticwebassets\\images\\logo.png"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony00001.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony00001.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony00003.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony00003.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony00004.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony00004.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony0001.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony0001.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony0002.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony0002.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony0003.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony0003.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony0004.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony0004.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony001.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony001.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony002.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony002.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony003.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony003.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony004.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony004.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony01.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony01.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony02.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony02.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony03.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony03.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony04.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony04.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony1.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony1.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony2.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony2.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony3.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony3.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\sony4.jpeg",
+      "PackagePath": "staticwebassets\\images\\sony4.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\t0001.jpeg",
+      "PackagePath": "staticwebassets\\images\\t0001.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\t0002.jpeg",
+      "PackagePath": "staticwebassets\\images\\t0002.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\t0003.jpeg",
+      "PackagePath": "staticwebassets\\images\\t0003.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\t001.jpeg",
+      "PackagePath": "staticwebassets\\images\\t001.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\t002.jpeg",
+      "PackagePath": "staticwebassets\\images\\t002.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\t003.jpeg",
+      "PackagePath": "staticwebassets\\images\\t003.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\t01.jpeg",
+      "PackagePath": "staticwebassets\\images\\t01.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\t02.jpeg",
+      "PackagePath": "staticwebassets\\images\\t02.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\t03.jpeg",
+      "PackagePath": "staticwebassets\\images\\t03.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\t1.jpeg",
+      "PackagePath": "staticwebassets\\images\\t1.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\t2.jpeg",
+      "PackagePath": "staticwebassets\\images\\t2.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\t3.jpeg",
+      "PackagePath": "staticwebassets\\images\\t3.jpeg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\js\\ProductsCard.js",
+      "PackagePath": "staticwebassets\\js\\ProductsCard.js"
     },
     {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\js\\site.js",
@@ -8737,8 +8917,16 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\uploads\\HĐ-THUÊ-MÁY-MÓC-THIẾT-BỊ(1).pdf",
+      "PackagePath": "staticwebassets\\uploads\\HĐ-THUÊ-MÁY-MÓC-THIẾT-BỊ(1).pdf"
+    },
+    {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\uploads\\a.docx",
       "PackagePath": "staticwebassets\\uploads\\a.docx"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\uploads\\a.pdf",
+      "PackagePath": "staticwebassets\\uploads\\a.pdf"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.website.props",

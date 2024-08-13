@@ -1,0 +1,54 @@
+﻿@model IEnumerable<website.Models.Invoice>
+
+@{
+    Layout = "~/Views/Shared/_LayoutQuanLy.cshtml";
+    ViewData["Title"] = "Chỉnh sửa mục hóa đơn";
+}
+
+<h2>Danh sách hóa đơn</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã hóa đơn</th>
+            <th>Tên khách hàng</th>
+            <th>Email</th>
+            <th>Điện thoại</th>
+            <th>Địa chỉ</th>
+            <th>Tổng tiền</th>
+            <th>Ngày tạo</th>
+            <th>Trạng thái</th>
+            <th>Ngày bắt đầu thuê</th>
+            <th>Ngày kết thúc thuê</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var invoice in Model)
+        {
+            <tr>
+                <td>@invoice.InvoiceId</td>
+                <td>@invoice.FullName</td>
+                <td>@invoice.Email</td>
+                <td>@invoice.Phone</td>
+                <td>@invoice.Address</td>
+                <td>@invoice.TotalAmount.ToString("C")</td>
+                <td>@invoice.CreatedAt.ToString("dd/MM/yyyy")</td>
+                <td>@invoice.Status</td>
+                <td>@(invoice.RentalStartDate.ToString("dd/MM/yyyy"))</td>
+                <td>@(invoice.RentalEndDate.ToString("dd/MM/yyyy"))</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@invoice.InvoiceId" class="btn btn-primary">Chỉnh sửa</a>
+                    <a asp-action="Details" asp-route-invoiceId="@invoice.InvoiceId" class="btn btn-info">Chi tiết</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

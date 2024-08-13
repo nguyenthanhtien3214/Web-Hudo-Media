@@ -1,0 +1,52 @@
+﻿@model IEnumerable<website.Models.Customer>
+
+@{
+    Layout = "~/Views/Shared/_LayoutQuanLy.cshtml";
+    ViewData["Title"] = "Customer List";
+}
+
+<h1>Customer List</h1>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().FullName)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Email)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Phone)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Address)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Notes)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                <td>@Html.DisplayFor(modelItem => item.Notes)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CustomerId" class="btn btn-warning">Edit</a> |
+                    <form asp-action="Delete" asp-route-id="@item.CustomerId" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this customer?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        <div>
+            <a asp-action="ExportToExcel" class="btn btn-primary">Download Excel</a>
+        </div>
+    </tbody>
+</table>

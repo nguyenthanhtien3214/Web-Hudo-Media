@@ -1,0 +1,43 @@
+﻿@model IEnumerable<website.Models.Document>
+
+@{
+    ViewData["Title"] = "Danh sách tài liệu";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (ViewData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @ViewData["Message"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tiêu đề</th>
+            <th>Nội dung</th>
+            <th>Loại tệp</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var document in Model)
+        {
+            <tr>
+                <td>@document.Title</td>
+                <td>@document.Content</td>
+                <td>@document.FileType</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = document.DocumentId })" class="btn btn-warning">Sửa</a>
+
+                    <form asp-action="Delete" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@document.DocumentId" />
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa tài liệu này?');">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

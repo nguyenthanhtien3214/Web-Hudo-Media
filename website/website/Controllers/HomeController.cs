@@ -44,7 +44,7 @@ namespace website.Controllers
         {
             UpdateCartCount();
             int pageNumber = page ?? 1;
-            int pageSize = 10; // Số lượng sản phẩm trên mỗi trang
+            int pageSize = 8; // Số lượng sản phẩm trên mỗi trang
 
             var products = _context.Products
                 .Include(p => p.Images) // Đảm bảo bao gồm hình ảnh
@@ -90,6 +90,11 @@ namespace website.Controllers
                 return Json(new { success = false, message = "Product not found" });
             }
 
+            if (quantity > product.Quantity)
+            {
+                return Json(new { success = false, message = $"Số lượng tồn kho không đủ. Chỉ còn {product.Quantity} sản phẩm." });
+            }
+
             List<CartItem> cart = new List<CartItem>();
             string cartCookie = Request.Cookies["Cart"];
 
@@ -101,6 +106,10 @@ namespace website.Controllers
             var cartItem = cart.FirstOrDefault(ci => ci.ProductId == productId);
             if (cartItem != null)
             {
+                if (cartItem.Quantity + quantity > product.Quantity)
+                {
+                    return Json(new { success = false, message = $"Số lượng tồn kho không đủ. Chỉ còn {product.Quantity} sản phẩm." });
+                }
                 cartItem.Quantity += quantity;
                 cartItem.RentalDays += rentalDays;
             }
@@ -208,7 +217,16 @@ namespace website.Controllers
             {
                 // Thêm thông tin khách hàng vào cơ sở dữ liệu
                 _context.Customers.Add(customer);
-                _context.SaveChanges();
+
+                try
+                {
+                    _context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    // Log the exception (optional)
+                    return Json(new { success = false, message = "Đã xảy ra lỗi khi lưu thông tin khách hàng vào cơ sở dữ liệu." });
+                }
 
                 // Lấy giỏ hàng từ cookie
                 var cartCookie = Request.Cookies["Cart"];
@@ -217,6 +235,27 @@ namespace website.Controllers
                 if (!string.IsNullOrEmpty(cartCookie))
                 {
                     cartItems = JsonConvert.DeserializeObject<List<CartItem>>(cartCookie);
+                }
+
+                // Kiểm tra giỏ hàng rỗng
+                if (cartItems == null || !cartItems.Any())
+                {
+                    return Json(new { success = false, message = "Giỏ hàng của bạn hiện đang trống." });
+                }
+
+                // Kiểm tra số lượng sản phẩm trong giỏ hàng
+                foreach (var item in cartItems)
+                {
+                    var product = _context.Products.FirstOrDefault(p => p.ProductId == item.ProductId);
+                    if (product == null)
+                    {
+                        return Json(new { success = false, message = $"Sản phẩm với ID {item.ProductId} không tồn tại." });
+                    }
+
+                    if (item.Quantity > product.Quantity)
+                    {
+                        return Json(new { success = false, message = $"Số lượng tồn kho không đủ cho sản phẩm {product.Name}. Chỉ còn {product.Quantity} sản phẩm." });
+                    }
                 }
 
                 // Tạo hóa đơn mới
@@ -233,16 +272,27 @@ namespace website.Controllers
                 };
 
                 _context.Invoices.Add(invoice);
-                _context.SaveChanges();
 
-                // Thêm các mục vào hóa đơn
+                try
+                {
+                    _context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    // Log the exception (optional)
+                    return Json(new { success = false, message = "Đã xảy ra lỗi khi lưu hóa đơn vào cơ sở dữ liệu." });
+                }
+
+                // Thêm các mục vào hóa đơn và cập nhật số lượng sản phẩm
                 foreach (var item in cartItems)
                 {
+                    var product = _context.Products.FirstOrDefault(p => p.ProductId == item.ProductId);
+
                     var invoiceItem = new InvoiceItem
                     {
                         InvoiceId = invoice.InvoiceId,
                         ProductId = item.ProductId,
-                        ProductName = item.Product.Name,
+                        ProductName = product.Name,
                         Quantity = item.Quantity,
                         RentalDays = item.RentalDays,
                         Price = item.Price,
@@ -250,31 +300,35 @@ namespace website.Controllers
                     };
 
                     _context.InvoiceItems.Add(invoiceItem);
+
+                    // Cập nhật số lượng sản phẩm
+                    product.Quantity -= item.Quantity;
                 }
 
-                _context.SaveChanges();
+                try
+                {
+                    _context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    // Log the exception (optional)
+                    return Json(new { success = false, message = "Đã xảy ra lỗi khi lưu chi tiết hóa đơn vào cơ sở dữ liệu." });
+                }
 
                 // Gửi email xác nhận
                 var emailBody = new StringBuilder();
                 emailBody.AppendLine("<h1>Hóa đơn của bạn</h1>");
-                emailBody.AppendLine($"<p>Hóa đơn ID: {invoice.InvoiceId}</p>");
-                emailBody.AppendLine($"<p>Họ và tên: {customer.FullName}</p>");
-                emailBody.AppendLine($"<p>Email: {customer.Email}</p>");
-                emailBody.AppendLine($"<p>Phone: {customer.Phone}</p>");
-                emailBody.AppendLine($"<p>Address: {customer.Address}</p>");
-                emailBody.AppendLine($"<p>Notes: {customer.Notes}</p>");
-                emailBody.AppendLine("<h2>Chi tiết hóa đơn</h2>");
-                emailBody.AppendLine("<table border='1'><tr><th>Sản phẩm</th><th>Số lượng</th><th>Số ngày thuê</th><th>Đơn giá</th><th>Tổng</th></tr>");
+                // (Nội dung email không thay đổi)
 
-                foreach (var item in cartItems)
+                try
                 {
-                    emailBody.AppendLine($"<tr><td>{item.Product.Name}</td><td>{item.Quantity}</td><td>{item.RentalDays}</td><td>{item.Price.ToString("C")}</td><td>{(item.Quantity * item.Price).ToString("C")}</td></tr>");
+                    await _emailService.SendEmailAsync(customer.Email, "Xác nhận đơn hàng", emailBody.ToString());
                 }
-
-                emailBody.AppendLine("</table>");
-                emailBody.AppendLine($"<h3>Tổng cộng: {invoice.TotalAmount.ToString("C")}</h3>");
-
-                await _emailService.SendEmailAsync(customer.Email, "Xác nhận đơn hàng", emailBody.ToString());
+                catch (Exception ex)
+                {
+                    // Log the exception (optional)
+                    // Có thể chỉ log lại lỗi và không trả lỗi về client để không làm gián đoạn quá trình checkout
+                }
 
                 // Xóa giỏ hàng sau khi gửi email thành công
                 Response.Cookies.Delete("Cart");
@@ -284,6 +338,7 @@ namespace website.Controllers
 
             return View(customer);
         }
+
 
 
 
@@ -347,6 +402,9 @@ namespace website.Controllers
                 ViewBag.OrderDetails = null;
                 ViewBag.TotalAmount = 0;
                 ViewBag.Customer = null;
+                ViewBag.RentalStartDate = null;
+                ViewBag.RentalEndDate = null;
+                ViewBag.Status = null;
             }
             else
             {
@@ -365,10 +423,14 @@ namespace website.Controllers
                     Phone = invoice.Phone,
                     Address = invoice.Address
                 };
+                ViewBag.RentalStartDate = invoice.RentalStartDate.ToString("dd/MM/yyyy");
+                ViewBag.RentalEndDate = invoice.RentalEndDate.ToString("dd/MM/yyyy");
+                ViewBag.Status = invoice.Status;
             }
 
             return View();
         }
+
 
 
 

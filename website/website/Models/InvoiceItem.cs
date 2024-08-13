@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace website.Models
 {
@@ -22,7 +22,8 @@ namespace website.Models
         public Product Product { get; set; }
 
         [Column("product_name")]
-        public string ProductName { get; set; }
+        [Required(ErrorMessage = "Product name is required")]
+        public string ProductName { get; set; } // Bắt buộc, không cho phép NULL
 
         [Column("quantity")]
         public int Quantity { get; set; }
@@ -30,10 +31,12 @@ namespace website.Models
         [Column("rental_days")]
         public int RentalDays { get; set; }
 
+
         [Column("price")]
         public decimal Price { get; set; }
 
         [Column("total")]
         public decimal Total { get; set; }
+
     }
 }
