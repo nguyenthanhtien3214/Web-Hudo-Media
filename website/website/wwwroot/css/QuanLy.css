@@ -1,0 +1,143 @@
+﻿/* CSS for Admin Layout - QuanLy.css */
+
+/* Body and Container */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #0077cc !important;
+}
+
+    .navbar .nav-link {
+        color: #fff !important;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+
+        .navbar .nav-link:hover {
+            color: #e0e0e0 !important;
+        }
+
+/* Buttons */
+.btn-primary {
+    background-color: #0077cc;
+    border-color: #0077cc;
+    color: #fff;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    .btn-primary:hover {
+        background-color: #005fa3;
+        border-color: #005fa3;
+        transform: translateY(-2px);
+    }
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #333;
+}
+
+    .btn-warning:hover {
+        background-color: #e0a800;
+        border-color: #d39e00;
+    }
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+/* Table */
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+    .table th,
+    .table td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .table th {
+        background-color: #0077cc;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .table td {
+        vertical-align: middle;
+    }
+
+    .table img {
+        border-radius: 5px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .table tr:last-child td {
+        border-bottom: none;
+    }
+
+/* Pagination */
+.pagination {
+    margin-top: 30px;
+    justify-content: center;
+}
+
+    .pagination .page-item .page-link {
+        color: #0077cc;
+        border: 1px solid #0077cc;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #0077cc;
+        border-color: #0077cc;
+        color: #fff;
+    }
+
+    .pagination .page-item.disabled .page-link {
+        color: #ccc;
+        border-color: #ccc;
+    }
+
+/* Footer */
+.footer {
+    background-color: #0077cc;
+    color: #fff;
+    text-align: center;
+}
+
+    .footer .text-muted {
+        color: #e0e0e0 !important;
+    }
+

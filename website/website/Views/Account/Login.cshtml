@@ -1,8 +1,9 @@
 ﻿@{
-    Layout = "~/Views/Account/_Layout1.cshtml";
     ViewBag.Title = "Đăng nhập";
 }
-
+@section Styles {
+    <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />
+}
 <h2>Đăng nhập</h2>
 
 <form method="post" asp-action="Login">

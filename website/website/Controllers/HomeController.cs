@@ -39,6 +39,8 @@ namespace website.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.CompanyIntroductionPart1 = "Hudo Media cung cấp dịch vụ cho thuê studio chuyên nghiệp với không gian hiện đại, đầy đủ trang thiết bị ánh sáng và âm thanh chất lượng cao. Chúng tôi đáp ứng nhu cầu quay phim, chụp ảnh, livestream với các gói dịch vụ linh hoạt, phù hợp với mọi yêu cầu của khách hàng.";
+            ViewBag.CompanyIntroductionPart2 = "Đội ngũ kỹ thuật viên giàu kinh nghiệm luôn sẵn sàng hỗ trợ và đảm bảo quá trình làm việc diễn ra suôn sẻ. Hudo Media cam kết mang đến không gian sáng tạo tối ưu, giúp khách hàng thực hiện các dự án truyền thông một cách hiệu quả và chuyên nghiệp.";
             UpdateCartCount();
             return View();
         }

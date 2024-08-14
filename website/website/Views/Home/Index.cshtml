@@ -4,5 +4,35 @@
     Layout = "_Layout";
     ViewData["Title"] = "Product List";
 }
-<h1>trang chu</h1>
 
+<h1>Chào mừng đến với HUDO MEDIA PRODUCTION!</h1>
+<p class="typing-text" data-text="@($"{ViewBag.CompanyIntroductionPart1}\n{ViewBag.CompanyIntroductionPart2}")"></p>
+
+<!-- Thêm CSS trực tiếp -->
+<style>
+
+    .content {
+        background-image: url('/images/studio.jpg');
+        background-size: cover; /* Để ảnh nền bao phủ toàn bộ màn hình */
+        background-position: center; /* Đặt vị trí của ảnh nền ở giữa */
+        background-repeat: no-repeat; /* Ảnh nền không lặp lại */
+    }
+
+    .row {
+        display: block; /* Hoặc inline-block, hoặc giá trị khác phù hợp với bố cục bạn mong muốn */
+        -webkit-box: initial; /* Hoặc 'none' nếu bạn muốn tắt hoàn toàn */
+        -ms-flexbox: initial; /* Hoặc 'none' để vô hiệu hóa */
+        margin-right: -15px;
+        margin-left: -15px;
+        flex-wrap: wrap; /* Nếu bạn muốn giữ lại tính chất wrap */
+    }
+
+    h1, .typing-text {
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Thêm bóng mờ cho văn bản */
+    }
+</style>
+
+@section Scripts {
+    <script src="~/js/typingEffect.js"></script>
+}

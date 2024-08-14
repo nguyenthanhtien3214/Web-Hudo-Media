@@ -85,8 +85,20 @@ ADD rental_start_date DATE,
     rental_end_date DATE,
     status NVARCHAR(50) DEFAULT 'Chưa xác nhận';
 GO
+ALTER TABLE invoices
+ALTER COLUMN total_amount DECIMAL(18, 2);
+GO
 
+ALTER TABLE invoice_items
+ALTER COLUMN total DECIMAL(18, 2);
+GO
+SELECT COLUMN_NAME, DATA_TYPE, NUMERIC_PRECISION, NUMERIC_SCALE 
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME = 'invoices' AND COLUMN_NAME = 'total_amount';
 
+SELECT COLUMN_NAME, DATA_TYPE, NUMERIC_PRECISION, NUMERIC_SCALE 
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME = 'invoice_items' AND COLUMN_NAME = 'total';
 -- Tạo bảng invoice_items (Chi tiết hóa đơn)
 CREATE TABLE invoice_items (
     invoice_item_id INT IDENTITY(1,1) PRIMARY KEY,
@@ -113,6 +125,82 @@ ALTER TABLE Documents
 ALTER COLUMN FileType NVARCHAR(255) NOT NULL;
 
 
+
+
+-- Điều chỉnh các cột DECIMAL để đảm bảo tính nhất quán
+ALTER TABLE products
+ALTER COLUMN price DECIMAL(18, 2) NOT NULL;
+
+ALTER TABLE invoices
+ALTER COLUMN total_amount DECIMAL(18, 2);
+
+ALTER TABLE invoice_items
+ALTER COLUMN price DECIMAL(18, 2);
+
+ALTER TABLE invoice_items
+ALTER COLUMN total DECIMAL(18, 2);
+
+ALTER TABLE cart
+DROP COLUMN total;
+ALTER TABLE cart
+ALTER COLUMN price DECIMAL(18, 2);
+
+ALTER TABLE cart
+ADD total AS (quantity * price * rental_days) PERSISTED;
+
+
+
+
+
+
+-- Bảng Admins chứa thông tin quản trị viên
+CREATE TABLE Admins (
+    admin_id INT IDENTITY(1,1) PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT GETDATE(),
+    updated_at DATETIME DEFAULT GETDATE()
+);
+
+-- Bảng PasswordResets lưu trữ các yêu cầu đặt lại mật khẩu
+CREATE TABLE PasswordResets (
+    reset_id INT IDENTITY(1,1) PRIMARY KEY,
+    admin_id INT NOT NULL,
+    token VARCHAR(255) NOT NULL,
+    expires_at DATETIME NOT NULL,
+    created_at DATETIME DEFAULT GETDATE(),
+    FOREIGN KEY (admin_id) REFERENCES Admins(admin_id) ON DELETE CASCADE
+);
+
+-- Bảng PasswordChanges lưu trữ lịch sử thay đổi mật khẩu
+CREATE TABLE PasswordChanges (
+    change_id INT IDENTITY(1,1) PRIMARY KEY,
+    admin_id INT NOT NULL,
+    old_password_hash VARCHAR(255) NOT NULL,
+    new_password_hash VARCHAR(255) NOT NULL,
+    changed_at DATETIME DEFAULT GETDATE(),
+    FOREIGN KEY (admin_id) REFERENCES Admins(admin_id) ON DELETE CASCADE
+);
+
+-- Bảng LoginAttempts lưu trữ các lần đăng nhập
+CREATE TABLE LoginAttempts (
+    attempt_id INT IDENTITY(1,1) PRIMARY KEY,
+    admin_id INT NOT NULL,
+    ip_address VARCHAR(45) NOT NULL,
+    attempted_at DATETIME DEFAULT GETDATE(),
+    status VARCHAR(50) NOT NULL,
+    FOREIGN KEY (admin_id) REFERENCES Admins(admin_id) ON DELETE CASCADE
+);
+
+ALTER TABLE Admins ALTER COLUMN created_at datetime2;
+ALTER TABLE Admins ALTER COLUMN updated_at datetime2;
+ALTER TABLE PasswordResets ALTER COLUMN created_at datetime2;
+ALTER TABLE PasswordResets ALTER COLUMN expires_at datetime2;
+ALTER TABLE PasswordChanges ALTER COLUMN changed_at datetime2;
+ALTER TABLE LoginAttempts ALTER COLUMN attempted_at datetime2;
+
+
 -- Thêm danh mục sản phẩm
 INSERT INTO categories (name) VALUES ('May anh chuyen nghiep');
 INSERT INTO categories (name) VALUES ('Phu kien may anh');
@@ -133,7 +221,7 @@ VALUES ('The nho SanDisk 128GB', 'The nho SanDisk 128GB voi toc do doc 170MB/s v
 INSERT INTO products (name, description, price, image, quantity, category_id)
 VALUES ('Chan may tripod Manfrotto', 'Chan may tripod Manfrotto voi chieu cao toi da 165cm, chiu tai toi da 8kg.', 50.00, 'manfrotto_tripod.jpg', 8, 2);
 
-
+select *from Admins
 
 select *from Documents
 select *from product_images

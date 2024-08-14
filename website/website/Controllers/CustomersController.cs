@@ -17,9 +17,21 @@ public class CustomersController : Controller
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Index()
     {
-        var customers = await _context.Customers.ToListAsync();
+        var customers = await _context.Customers
+            .Select(c => new Customer
+            {
+                CustomerId = c.CustomerId,
+                FullName = c.FullName ?? string.Empty, // Nếu FullName là NULL, sử dụng chuỗi rỗng
+                Email = c.Email ?? string.Empty, // Tương tự cho Email
+                Phone = c.Phone ?? string.Empty, // Tương tự cho Phone
+                Address = c.Address ?? string.Empty, // Tương tự cho Address
+                Notes = c.Notes ?? string.Empty // Tương tự cho Notes
+            })
+            .ToListAsync();
+
         return View(customers);
     }
+
     [Authorize(Roles = "Admin")]
     // GET: Customers/Edit/5
     public async Task<IActionResult> Edit(int? id)
@@ -126,13 +138,13 @@ public class CustomersController : Controller
             foreach (var customer in customers)
             {
                 worksheet.Cells[row, 1].Value = customer.CustomerId;
-                worksheet.Cells[row, 2].Value = customer.FullName;
-                worksheet.Cells[row, 3].Value = customer.Email;
-                worksheet.Cells[row, 4].Value = customer.Phone;
-                worksheet.Cells[row, 5].Value = customer.Address;
-                worksheet.Cells[row, 6].Value = customer.Notes;
+                worksheet.Cells[row, 2].Value = customer.FullName ?? string.Empty; // Nếu FullName là NULL, sử dụng chuỗi rỗng
+                worksheet.Cells[row, 3].Value = customer.Email ?? string.Empty;
+                worksheet.Cells[row, 4].Value = customer.Phone ?? string.Empty;
+                worksheet.Cells[row, 5].Value = customer.Address ?? string.Empty;
+                worksheet.Cells[row, 6].Value = customer.Notes ?? string.Empty;
                 row++;
-            }
+            }   
 
             // Định dạng cho file Excel
             worksheet.Cells[1, 1, row - 1, 6].AutoFitColumns();

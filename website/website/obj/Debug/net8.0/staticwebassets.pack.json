@@ -17,8 +17,24 @@
       "PackagePath": "staticwebassets\\css\\DichVuThue.css"
     },
     {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\ForgotPassword.css",
+      "PackagePath": "staticwebassets\\css\\ForgotPassword.css"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\Login.css",
+      "PackagePath": "staticwebassets\\css\\Login.css"
+    },
+    {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\ProductsCard.css",
       "PackagePath": "staticwebassets\\css\\ProductsCard.css"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\QuanLy.css",
+      "PackagePath": "staticwebassets\\css\\QuanLy.css"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\ResetPassword.css",
+      "PackagePath": "staticwebassets\\css\\ResetPassword.css"
     },
     {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\TrackOrder.css",
@@ -8737,6 +8753,14 @@
       "PackagePath": "staticwebassets\\images\\sony4.jpeg"
     },
     {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\studio.jpg",
+      "PackagePath": "staticwebassets\\images\\studio.jpg"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\studio2.jpg",
+      "PackagePath": "staticwebassets\\images\\studio2.jpg"
+    },
+    {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\t0001.jpeg",
       "PackagePath": "staticwebassets\\images\\t0001.jpeg"
     },
@@ -8785,12 +8809,20 @@
       "PackagePath": "staticwebassets\\images\\t3.jpeg"
     },
     {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\zalo-icon.png",
+      "PackagePath": "staticwebassets\\images\\zalo-icon.png"
+    },
+    {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\js\\ProductsCard.js",
       "PackagePath": "staticwebassets\\js\\ProductsCard.js"
     },
     {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\js\\typingEffect.js",
+      "PackagePath": "staticwebassets\\js\\typingEffect.js"
     },
     {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\lib\\bootstrap-4.0.0-dist\\css\\bootstrap-grid.css",

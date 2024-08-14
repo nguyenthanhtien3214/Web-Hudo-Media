@@ -23,9 +23,11 @@ namespace website.Models
         [Column("phone")]
         public string Phone { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng nhập địa chỉ.")]
         [Column("address")]
         public string Address { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng nhập ghi chú.")]
         [Column("notes")]
         public string Notes { get; set; }
     }

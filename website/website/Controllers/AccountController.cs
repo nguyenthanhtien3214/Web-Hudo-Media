@@ -93,14 +93,12 @@ namespace website.Controllers
             // Chuyển hướng về trang Home/Index
             return RedirectToAction("Index", "Home");
         }
-        [Authorize(Roles = "Admin")]
         // GET: /Account/ForgotPassword
         [HttpGet]
         public IActionResult ForgotPassword()
         {
             return View();
         }
-        [Authorize(Roles = "Admin")]
 
         // POST: /Account/ForgotPassword
         [HttpPost]
@@ -145,7 +143,6 @@ namespace website.Controllers
             ViewBag.Message = "Đã gửi email hướng dẫn đặt lại mật khẩu.";
             return View();
         }
-        [Authorize(Roles = "Admin")]
         // GET: /Account/ResetPassword
         [HttpGet]
         public IActionResult ResetPassword(string token)
@@ -161,7 +158,6 @@ namespace website.Controllers
 
             return View(new ResetPasswordViewModel { Token = token });
         }
-        [Authorize(Roles = "Admin")]
         // POST: /Account/ResetPassword
         [HttpPost]
         public IActionResult ResetPassword(ResetPasswordViewModel model)
@@ -190,7 +186,6 @@ namespace website.Controllers
             ViewBag.ErrorMessage = "Đã có lỗi xảy ra. Vui lòng thử lại.";
             return View(model);
         }
-        [Authorize(Roles = "Admin")]
         private string ComputeSha256Hash(string rawData)
         {
             using (SHA256 sha256Hash = SHA256.Create())
@@ -204,14 +199,12 @@ namespace website.Controllers
                 return builder.ToString();
             }
         }
-        [Authorize(Roles = "Admin")]
         // GET: /Account/Success
         [HttpGet]
         public IActionResult Success()
         {
             return View();
         }
-        [Authorize(Roles = "Admin")]
         // GET: /Account/Error
         [HttpGet]
         public IActionResult Error()
