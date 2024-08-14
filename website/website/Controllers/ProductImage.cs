@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using website.Data;
 using website.Models;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace website.Controllers
 {
@@ -16,7 +17,7 @@ namespace website.Controllers
         {
             _context = context;
         }
-
+        [Authorize(Roles = "Admin")]
         // Hiển thị danh sách ảnh để xóa
         [HttpGet]
         public async Task<IActionResult> DeleteImages()
@@ -24,7 +25,7 @@ namespace website.Controllers
             var images = await _context.ProductImages.ToListAsync();
             return View(images);
         }
-
+        [Authorize(Roles = "Admin")]
         // Phương thức xóa ảnh
         [HttpPost]
         public async Task<IActionResult> Delete(int id)

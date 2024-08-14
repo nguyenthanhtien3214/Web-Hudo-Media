@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dS9aHk8cnJtB8SV/IDFtB9jStf6+BnfFjH9HtT0LxYE=",
+  "Hash": "dDTaEvurCBRK8ZbQqpZGeefpKXmcJcwZVdCpQIwdug8=",
   "Source": "website",
   "BasePath": "_content/website",
   "Mode": "Default",
@@ -40810,6 +40810,25 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
+      "Identity": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\TrackOrder.css",
+      "SourceId": "website",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\HUDO\\web3\\website\\website\\wwwroot\\",
+      "BasePath": "_content/website",
+      "RelativePath": "css/TrackOrder.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\TrackOrder.css"
+    },
+    {
       "Identity": "E:\\HUDO\\web3\\website\\website\\wwwroot\\favicon.ico",
       "SourceId": "website",
       "SourceType": "Discovered",
@@ -42385,6 +42404,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "E:\\HUDO\\web3\\website\\website\\wwwroot\\templates\\InvoiceTemplate.html",
+      "SourceId": "website",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\HUDO\\web3\\website\\website\\wwwroot\\",
+      "BasePath": "_content/website",
+      "RelativePath": "templates/InvoiceTemplate.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\templates\\InvoiceTemplate.html"
     },
     {
       "Identity": "E:\\HUDO\\web3\\website\\website\\wwwroot\\uploads\\a.docx",

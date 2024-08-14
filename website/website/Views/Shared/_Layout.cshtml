@@ -14,16 +14,23 @@
     <div class="wrapper">
         <header class="header">
             <div class="logo">
-                <img src="~/images/logo.png" alt="Company Logo">
+                <a href="@Url.Action("Index", "Home")">
+                    <img src="~/images/logo.png" alt="Company Logo">
+                </a>
             </div>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="@Url.Action("Index", "Home")">Trang Chủ</a></li>
-                    <li class="nav-item"><a href="#">Giới Thiệu</a></li>
-                    <li class="nav-item"><a href="@Url.Action("DichVuThue", "Home")">Dịch Vụ</a></li>
-                    <li class="nav-item"><a href="@Url.Action("Index", "ThuTucChoThue")">Thủ Tục Cho Thuê</a></li>
-                    <li class="nav-item"><a href="#">Liên Hệ</a></li>
-                    <li class="nav-item"><a href="@Url.Action("TrackOrder", "Home")">Tra Cứu</a></li>
+                    <li class="nav-item @((ViewBag.ActivePage == "Home") ? "active" : "")">
+                        <a href="@Url.Action("Index", "Home")">Trang Chủ</a>
+                    </li>
+                    <li class="nav-item @((ViewBag.ActivePage == "DichVuThue") ? "active" : "")">
+                        <a href="@Url.Action("DichVuThue", "Home")">Dịch Vụ</a>
+                    </li>
+                    <li class="nav-item @((ViewBag.ActivePage == "ThuTucChoThue") ? "active" : "")">
+                        <a href="@Url.Action("Index", "ThuTucChoThue")">Thủ Tục Cho Thuê</a>
+                    </li>
+                    <li class="nav-item @((ViewBag.ActivePage == "TrackOrder") ? "active" : "")">
+                        <a href="@Url.Action("TrackOrder", "Home")">Tra Cứu</a>
                     </li>
                 </ul>
             </nav>
@@ -37,9 +44,6 @@
 
         <div class="main-content">
             <div class="content-wrapper">
-                <aside class="sidebar">
-                    <p>Quảng cáo 1</p>
-                </aside>
                 <div class="content">
                     <section class="featured spad">
                         <div class="container">
@@ -53,9 +57,6 @@
                         </div>
                     </section>
                 </div>
-                <aside class="sidebar">
-                    <p>Quảng cáo 2</p>
-                </aside>
             </div>
         </div>
 

@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "E:\\HUDO\\web3\\website\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\views\\invoiceitems\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\views\\invoiceitems\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\Views\\InvoiceItems\\Edit.cshtml",
+              "RelativeDocumentMoniker": "website\\Views\\InvoiceItems\\Edit.cshtml",
+              "ToolTip": "E:\\HUDO\\web3\\website\\website\\Views\\InvoiceItems\\Edit.cshtml",
+              "RelativeToolTip": "website\\Views\\InvoiceItems\\Edit.cshtml",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAADYAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-14T04:31:18.446Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

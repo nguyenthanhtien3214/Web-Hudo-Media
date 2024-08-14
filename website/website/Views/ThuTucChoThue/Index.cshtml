@@ -1,7 +1,7 @@
 ﻿@model website.Models.Document
 
 @{
-    ViewData["Title"] = "Document Viewer";
+    ViewData["Title"] = "";
 }
 
 <!DOCTYPE html>
@@ -10,19 +10,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
+    <style>
+        .row .block-display {
+            display: block; /* Hoặc inline, tùy theo yêu cầu */
+            width: 100%;
+        }
+
+        .row .pdf-container {
+            display: block; /* Hoặc inline, tùy theo yêu cầu */
+            width: 100%;
+            height: 600px;
+        }
+
+        .h3, h3 {
+            font-size: 1.75rem;
+            color: #4a90e2;
+            font-weight: bold;
+        }
+        p{
+            font-size: 1.rem;
+            color: #4a90e2;
+        }
+    </style>
 </head>
 <body>
     <h2>@ViewData["Title"]</h2>
 
     @if (Model != null)
     {
-        <div>
+        <div class="block-display">
             <h3>@Model.Title</h3>
             <p>@Model.Content</p>
 
             @if (ViewData["DocumentPath"] != null)
             {
-                <iframe class="pdf-container" src="@ViewData["DocumentPath"]" width="100%" height="600px"></iframe>
+                <iframe class="pdf-container" src="@ViewData["DocumentPath"]"></iframe>
             }
             else
             {

@@ -1,7 +1,7 @@
 ﻿@model website.Models.Invoice
 
 @{
-    Layout = "~/Views/Shared/_LayoutQuanLy.cshtml";
+    Layout = "~/Views/QuanLy/_Layout.cshtml";
     ViewData["Title"] = "Chỉnh sửa mục hóa đơn";
 }
 
@@ -56,6 +56,8 @@
         <select asp-for="Status" class="form-control">
             <option value="Chưa xác nhận">Chưa xác nhận</option>
             <option value="Đã xác nhận">Đã xác nhận</option>
+            <option value="Đã Hết Hạn">Đã Hết Hạn</option>
+
         </select>
         <span asp-validation-for="Status" class="text-danger"></span>
     </div>

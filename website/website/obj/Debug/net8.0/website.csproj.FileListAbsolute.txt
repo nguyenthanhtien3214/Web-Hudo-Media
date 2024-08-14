@@ -11,6 +11,9 @@ E:\HUDO\web3\website\website\bin\Debug\net8.0\Aspose.Words.Pdf2Word.dll
 E:\HUDO\web3\website\website\bin\Debug\net8.0\Aspose.Words.dll
 E:\HUDO\web3\website\website\bin\Debug\net8.0\Azure.Core.dll
 E:\HUDO\web3\website\website\bin\Debug\net8.0\Azure.Identity.dll
+E:\HUDO\web3\website\website\bin\Debug\net8.0\EPPlus.dll
+E:\HUDO\web3\website\website\bin\Debug\net8.0\EPPlus.Interfaces.dll
+E:\HUDO\web3\website\website\bin\Debug\net8.0\EPPlus.System.Drawing.dll
 E:\HUDO\web3\website\website\bin\Debug\net8.0\Humanizer.dll
 E:\HUDO\web3\website\website\bin\Debug\net8.0\Microsoft.AspNetCore.Razor.Language.dll
 E:\HUDO\web3\website\website\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
@@ -42,6 +45,7 @@ E:\HUDO\web3\website\website\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dl
 E:\HUDO\web3\website\website\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
 E:\HUDO\web3\website\website\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 E:\HUDO\web3\website\website\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+E:\HUDO\web3\website\website\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
 E:\HUDO\web3\website\website\bin\Debug\net8.0\Microsoft.NET.StringTools.dll
 E:\HUDO\web3\website\website\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 E:\HUDO\web3\website\website\bin\Debug\net8.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
@@ -262,7 +266,3 @@ E:\HUDO\web3\website\website\obj\Debug\net8.0\refint\website.dll
 E:\HUDO\web3\website\website\obj\Debug\net8.0\website.pdb
 E:\HUDO\web3\website\website\obj\Debug\net8.0\website.genruntimeconfig.cache
 E:\HUDO\web3\website\website\obj\Debug\net8.0\ref\website.dll
-E:\HUDO\web3\website\website\bin\Debug\net8.0\EPPlus.dll
-E:\HUDO\web3\website\website\bin\Debug\net8.0\EPPlus.Interfaces.dll
-E:\HUDO\web3\website\website\bin\Debug\net8.0\EPPlus.System.Drawing.dll
-E:\HUDO\web3\website\website\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll

@@ -4,6 +4,7 @@ using website.Data;
 using website.Models;
 using System.Threading.Tasks;
 using OfficeOpenXml;
+using Microsoft.AspNetCore.Authorization;
 
 public class CustomersController : Controller
 {
@@ -13,13 +14,13 @@ public class CustomersController : Controller
     {
         _context = context;
     }
-
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Index()
     {
         var customers = await _context.Customers.ToListAsync();
         return View(customers);
     }
-
+    [Authorize(Roles = "Admin")]
     // GET: Customers/Edit/5
     public async Task<IActionResult> Edit(int? id)
     {
@@ -35,7 +36,7 @@ public class CustomersController : Controller
         }
         return View(customer);
     }
-
+    [Authorize(Roles = "Admin")]
     // POST: Customers/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -70,7 +71,7 @@ public class CustomersController : Controller
         }
         return View(customer);
     }
-
+    [Authorize(Roles = "Admin")]
     // GET: Customers/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -96,12 +97,12 @@ public class CustomersController : Controller
 
         return RedirectToAction(nameof(Index));
     }
-
+    [Authorize(Roles = "Admin")]
     private bool CustomerExists(int id)
     {
         return _context.Customers.Any(e => e.CustomerId == id);
     }
-
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> ExportToExcel()
     {
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial;

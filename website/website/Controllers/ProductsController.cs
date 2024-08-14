@@ -9,6 +9,7 @@ using website.Models;
 using X.PagedList;
 using X.PagedList.Extensions;
 using X.PagedList;
+using Microsoft.AspNetCore.Authorization;
 
 public class ProductsController : Controller
 {
@@ -18,7 +19,7 @@ public class ProductsController : Controller
     {
         _context = context;
     }
-
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Index(int? page)
     {
         int pageSize = 5;
@@ -32,7 +33,7 @@ public class ProductsController : Controller
         var pagedProducts = products.ToPagedList(pageNumber, pageSize);
         return View(pagedProducts);
     }
-
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> ListSanPham(int? page)
     {
         int pageSize = 5;
@@ -54,7 +55,7 @@ public class ProductsController : Controller
         ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name");
         return View(viewModel);
     }
-
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     [ValidateAntiForgeryToken]
 
@@ -130,7 +131,7 @@ public class ProductsController : Controller
         ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name");
         return View(viewModel);
     }
-
+    [Authorize(Roles = "Admin")]
     private async Task<IPagedList<Product>> GetPagedProductsAsync(int pageNumber, int pageSize)
     {
         var products = await _context.Products
@@ -140,7 +141,7 @@ public class ProductsController : Controller
 
         return products.ToPagedList(pageNumber, pageSize);
     }
-
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int id)
     {
         var product = await _context.Products
@@ -157,7 +158,7 @@ public class ProductsController : Controller
         return View(product);  // Hoặc trả về một View khác để xác nhận
     }
 
-
+    [Authorize(Roles = "Admin")]
     [HttpPost, ActionName("DeleteConfirmed")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
@@ -188,7 +189,7 @@ public class ProductsController : Controller
 
         return RedirectToAction(nameof(ListSanPham));
     }
-
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<IActionResult> Edit(int? id)
     {
@@ -209,7 +210,7 @@ public class ProductsController : Controller
         ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", product.CategoryId);
         return View(product);
     }
-
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, Product product, List<IFormFile> files)

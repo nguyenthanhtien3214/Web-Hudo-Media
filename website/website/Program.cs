@@ -16,6 +16,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Add EmailService
 builder.Services.AddScoped<EmailService>(); // Đăng ký EmailService như một dịch vụ có phạm vi
 
+// Add ViewRenderService
+builder.Services.AddScoped<IViewRenderService, ViewRenderService>();
+
 // Add Authentication
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

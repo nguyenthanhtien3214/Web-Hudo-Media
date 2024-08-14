@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using website.Models;
 using System.Threading.Tasks;
 using website.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace website.Controllers
 {
@@ -14,6 +15,7 @@ namespace website.Controllers
         {
             _context = context;
         }
+        [Authorize(Roles = "Admin")]
 
         // GET: InvoiceItems
         public async Task<IActionResult> Index()
@@ -50,7 +52,7 @@ namespace website.Controllers
 
             return View(invoices);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: InvoiceItems/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -66,7 +68,7 @@ namespace website.Controllers
             }
             return View(invoice);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: InvoiceItems/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -105,6 +107,7 @@ namespace website.Controllers
             }
             return View(invoice);
         }
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? invoiceId)
         {
             if (invoiceId == null)
@@ -126,7 +129,7 @@ namespace website.Controllers
             return View(invoiceItems);
         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> UpdateQuantity(int invoiceItemId, int quantity)
         {
@@ -169,8 +172,8 @@ namespace website.Controllers
 
 
 
-
-            [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
         public async Task<IActionResult> DeleteItem(int invoiceItemId)
         {
             var invoiceItem = await _context.InvoiceItems
@@ -211,8 +214,8 @@ namespace website.Controllers
         }
 
 
-        
 
+        [Authorize(Roles = "Admin")]
         private bool InvoiceExists(int id)
         {
             return _context.Invoices.Any(e => e.InvoiceId == id);

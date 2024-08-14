@@ -19,13 +19,16 @@ namespace website.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
         private readonly EmailService _emailService;
+        private readonly IViewRenderService _viewRenderService;
 
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, EmailService emailService)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, EmailService emailService, IViewRenderService viewRenderService)
         {
             _logger = logger;
             _context = context;
             _emailService = emailService;
+            _viewRenderService = viewRenderService;
+
 
         }
 
@@ -40,19 +43,31 @@ namespace website.Controllers
             return View();
         }
 
-        public IActionResult DichVuThue(int? page)
+        public IActionResult DichVuThue(int? page, int? categoryId)
         {
             UpdateCartCount();
             int pageNumber = page ?? 1;
             int pageSize = 8; // Số lượng sản phẩm trên mỗi trang
 
-            var products = _context.Products
-                .Include(p => p.Images) // Đảm bảo bao gồm hình ảnh
-                .ToPagedList(pageNumber, pageSize);
+            // Lấy tất cả danh mục để đổ vào combobox
+            var categories = _context.Categories.ToList();
+
+            var productsQuery = _context.Products
+                .Include(p => p.Images)
+                .AsQueryable();
+
+            if (categoryId.HasValue)
+            {
+                productsQuery = productsQuery.Where(p => p.CategoryId == categoryId.Value);
+            }
+
+            var products = productsQuery.ToPagedList(pageNumber, pageSize);
 
             var model = new ProductViewModel
             {
-                Products = products
+                Products = products,
+                Categories = categories,
+                SelectedCategoryId = categoryId
             };
 
             return View(model);
@@ -224,7 +239,7 @@ namespace website.Controllers
                 }
                 catch (Exception ex)
                 {
-                    // Log the exception (optional)
+                    _logger.LogError(ex, "Error saving customer information to the database.");
                     return Json(new { success = false, message = "Đã xảy ra lỗi khi lưu thông tin khách hàng vào cơ sở dữ liệu." });
                 }
 
@@ -237,25 +252,9 @@ namespace website.Controllers
                     cartItems = JsonConvert.DeserializeObject<List<CartItem>>(cartCookie);
                 }
 
-                // Kiểm tra giỏ hàng rỗng
                 if (cartItems == null || !cartItems.Any())
                 {
                     return Json(new { success = false, message = "Giỏ hàng của bạn hiện đang trống." });
-                }
-
-                // Kiểm tra số lượng sản phẩm trong giỏ hàng
-                foreach (var item in cartItems)
-                {
-                    var product = _context.Products.FirstOrDefault(p => p.ProductId == item.ProductId);
-                    if (product == null)
-                    {
-                        return Json(new { success = false, message = $"Sản phẩm với ID {item.ProductId} không tồn tại." });
-                    }
-
-                    if (item.Quantity > product.Quantity)
-                    {
-                        return Json(new { success = false, message = $"Số lượng tồn kho không đủ cho sản phẩm {product.Name}. Chỉ còn {product.Quantity} sản phẩm." });
-                    }
                 }
 
                 // Tạo hóa đơn mới
@@ -279,7 +278,7 @@ namespace website.Controllers
                 }
                 catch (Exception ex)
                 {
-                    // Log the exception (optional)
+                    _logger.LogError(ex, "Error saving invoice to the database.");
                     return Json(new { success = false, message = "Đã xảy ra lỗi khi lưu hóa đơn vào cơ sở dữ liệu." });
                 }
 
@@ -311,23 +310,55 @@ namespace website.Controllers
                 }
                 catch (Exception ex)
                 {
-                    // Log the exception (optional)
+                    _logger.LogError(ex, "Error saving invoice items to the database.");
                     return Json(new { success = false, message = "Đã xảy ra lỗi khi lưu chi tiết hóa đơn vào cơ sở dữ liệu." });
                 }
 
-                // Gửi email xác nhận
-                var emailBody = new StringBuilder();
-                emailBody.AppendLine("<h1>Hóa đơn của bạn</h1>");
-                // (Nội dung email không thay đổi)
+                // Tạo đối tượng InvoiceViewModel
+                var invoiceViewModel = new InvoiceViewModel
+                {
+                    InvoiceId = invoice.InvoiceId,
+                    CustomerName = customer.FullName,
+                    CustomerEmail = customer.Email,
+                    CustomerPhone = customer.Phone,
+                    CustomerAddress = customer.Address,
+                    CartItems = cartItems.Select(ci => new CartItemViewModel
+                    {
+                        ProductName = ci.Product.Name,
+                        Quantity = ci.Quantity,
+                        Price = ci.Price,
+                        RentalDays = ci.RentalDays
+                    }).ToList(),
+                    TotalAmount = invoice.TotalAmount
+                };
+
+                // Tạo HTML cho các mục trong giỏ hàng
+                var orderItemsHtml = new StringBuilder();
+                foreach (var item in invoiceViewModel.CartItems)
+                {
+                    orderItemsHtml.AppendLine($"<tr><td>{item.ProductName}</td><td>{item.Quantity}</td><td>{item.Price:C}</td><td>{(item.Quantity * item.Price):C}</td></tr>");
+                }
+
+                // Đọc file HTML từ wwwroot/templates
+                var templatePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/templates/InvoiceTemplate.html");
+                var emailBody = await System.IO.File.ReadAllTextAsync(templatePath);
+
+                // Thay thế các placeholder trong template bằng dữ liệu thực
+                emailBody = emailBody.Replace("{{InvoiceId}}", invoice.InvoiceId.ToString())
+                                     .Replace("{{CustomerName}}", customer.FullName)
+                                     .Replace("{{CustomerEmail}}", customer.Email)
+                                     .Replace("{{CustomerPhone}}", customer.Phone)
+                                     .Replace("{{CustomerAddress}}", customer.Address)
+                                     .Replace("{{TotalAmount}}", invoice.TotalAmount.ToString("C"))
+                                     .Replace("{{OrderItems}}", orderItemsHtml.ToString());
 
                 try
                 {
-                    await _emailService.SendEmailAsync(customer.Email, "Xác nhận đơn hàng", emailBody.ToString());
+                    await _emailService.SendEmailAsync(customer.Email, "Xác nhận đơn hàng", emailBody);
                 }
                 catch (Exception ex)
                 {
-                    // Log the exception (optional)
-                    // Có thể chỉ log lại lỗi và không trả lỗi về client để không làm gián đoạn quá trình checkout
+                    _logger.LogError(ex, "Error sending order confirmation email.");
                 }
 
                 // Xóa giỏ hàng sau khi gửi email thành công
@@ -338,6 +369,11 @@ namespace website.Controllers
 
             return View(customer);
         }
+
+
+
+
+
 
 
 

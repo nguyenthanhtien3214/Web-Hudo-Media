@@ -3,7 +3,9 @@
 @{
     ViewData["Title"] = "Tra Cứu Đơn Hàng";
 }
-
+@section Styles {
+    <link rel="stylesheet" href="~/css/TrackOrder.css" asp-append-version="true" />
+}
 <div class="container mt-4">
     <h1>Tra Cứu Đơn Hàng</h1>
     <form asp-action="TrackOrder" method="get">
@@ -47,13 +49,13 @@
                             <td>@item.ProductName</td>
                             <td>@item.Quantity</td>
                             <td>@item.RentalDays</td>
-                            <td>@item.Price.ToString("C")</td>
-                            <td>@(item.Quantity * item.Price).ToString("C")</td>
+                            <td>@item.Price</td>
+                            <td>@(item.Quantity * item.Price)</td>
                         </tr>
                     }
                 </tbody>
             </table>
-            <h3>Tổng cộng: @ViewBag.TotalAmount.ToString("C")</h3>
+            <h3>Tổng cộng: @ViewBag.TotalAmount</h3>
         </div>
 
         <div class="mt-4">

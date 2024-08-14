@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 using System.Linq;
@@ -16,7 +17,6 @@ namespace website.Controllers
         {
             _context = context;
         }
-
         public IActionResult Index()
         {
             var document = _context.Documents.FirstOrDefault();
@@ -38,7 +38,7 @@ namespace website.Controllers
 
             return View(document);
         }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
             var document = _context.Documents.FirstOrDefault(d => d.DocumentId == id);
@@ -51,7 +51,7 @@ namespace website.Controllers
 
             return View(document);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Edit(website.Models.Document document, IFormFile file)
         {
@@ -92,7 +92,7 @@ namespace website.Controllers
             return View(document);
         }
 
-
+        [Authorize(Roles = "Admin")]
         // Phương thức hiển thị danh sách các tài liệu
         public async Task<IActionResult> List(string message = null)
         {

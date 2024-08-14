@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\css\\ProductsCard.css"
     },
     {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\TrackOrder.css",
+      "PackagePath": "staticwebassets\\css\\TrackOrder.css"
+    },
+    {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\fontawesome-free-6.6.0-web\\fontawesome-free-6.6.0-web\\LICENSE.txt",
       "PackagePath": "staticwebassets\\css\\fontawesome-free-6.6.0-web\\fontawesome-free-6.6.0-web\\LICENSE.txt"
     },
@@ -8915,6 +8919,10 @@
     {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\templates\\InvoiceTemplate.html",
+      "PackagePath": "staticwebassets\\templates\\InvoiceTemplate.html"
     },
     {
       "Id": "E:\\HUDO\\web3\\website\\website\\wwwroot\\uploads\\HĐ-THUÊ-MÁY-MÓC-THIẾT-BỊ(1).pdf",

@@ -20,14 +20,14 @@ namespace website.Models
         public string Description { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Vui lòng nhập giá sản phẩm.")]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Giá sản phẩm phải lớn hơn 0.")]
+        [Range(0.01, (double)decimal.MaxValue, ErrorMessage = "Giá sản phẩm phải lớn hơn 0.")]
         [Column("price")]
-        public decimal Price { get; set; }
+        public decimal Price { get; set; } // Đảm bảo kiểu dữ liệu là decimal, khớp với cơ sở dữ liệu
 
         [Required(ErrorMessage = "Vui lòng nhập số lượng sản phẩm.")]
         [Range(1, int.MaxValue, ErrorMessage = "Số lượng sản phẩm phải lớn hơn 0.")]
         [Column("quantity")]
-        public int Quantity { get; set; }
+        public int Quantity { get; set; } // Kiểu dữ liệu int khớp với cơ sở dữ liệu
 
         [Required(ErrorMessage = "Vui lòng chọn danh mục sản phẩm.")]
         [Column("category_id")]

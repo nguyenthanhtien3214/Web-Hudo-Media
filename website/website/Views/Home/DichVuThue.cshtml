@@ -8,34 +8,49 @@
 @section Styles {
     <link rel="stylesheet" href="~/css/DichVuThue.css" asp-append-version="true" />
 }
+
+<form asp-action="DichVuThue" method="get">
+    <select name="categoryId" asp-for="SelectedCategoryId" asp-items="@(new SelectList(Model.Categories, "CategoryId", "Name"))" class="select">
+        <option value="">Tất cả danh mục</option>
+    </select>
+    <button type="submit">Lọc</button>
+</form>
+
 <section class="product-list">
-    @foreach (var product in Model.Products)
+    @if (!Model.Products.Any())
     {
-        <div class="product">
-            <div class="product__photo">
-                <div class="photo-container">
-                    <div class="photo-main">
-                        @if (product.Images != null && product.Images.Any())
-                        {
-                            <img src="@Url.Content($"~/{product.Images.First().ImageUrl}")" alt="@product.Name" />
-                        }
-                        else
-                        {
-                            <img src="@Url.Content("~/images/default-image.jpg")" alt="No Image Available" />
-                        }
+        <div class="notification">Không có sản phẩm nào thuộc danh mục này.</div>
+    }
+    else
+    {
+        @foreach (var product in Model.Products)
+        {
+            <div class="product">
+                <div class="product__photo">
+                    <div class="photo-container">
+                        <div class="photo-main">
+                            @if (product.Images != null && product.Images.Any())
+                            {
+                                <img src="@Url.Content($"~/{product.Images.First().ImageUrl}")" alt="@product.Name" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/images/default-image.jpg")" alt="No Image Available" />
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="product__info">
-                <div class="title">
-                    <h1>@product.Name</h1>
+                <div class="product__info">
+                    <div class="title">
+                        <h1>@product.Name</h1>
+                    </div>
+                    <div class="price">
+                        <span>@product.Price.ToString("C")</span>
+                    </div>
+                    <a href="@Url.Action("ProductsCard", new { id = product.ProductId })" class="buy--btn">Xem Chi Tiết</a>
                 </div>
-                <div class="price">
-                    <span>@product.Price.ToString("C")</span>
-                </div>
-                <a href="@Url.Action("ProductsCard", new { id = product.ProductId })" class="buy--btn">Xem Chi Tiết</a>
             </div>
-        </div>
+        }
     }
 </section>
 
@@ -67,7 +82,7 @@
             else
             {
                 <li class="page-item">
-                    <a class="page-link" asp-action="DichVuThue" asp-route-page="@i">@i</a>
+                    <a class="page-link" asp-action="DichVuThue" asp-route-page="@i" asp-route-categoryId="@Model.SelectedCategoryId">@i</a>
                 </li>
             }
         }
@@ -75,7 +90,7 @@
         @if (Model.Products.HasNextPage)
         {
             <li class="page-item">
-                <a class="page-link" asp-action="DichVuThue" asp-route-page="@(Model.Products.PageNumber + 1)" aria-label="Next">
+                <a class="page-link" asp-action="DichVuThue" asp-route-page="@(Model.Products.PageNumber + 1)" aria-label="Next" asp-route-categoryId="@Model.SelectedCategoryId">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>
@@ -88,5 +103,3 @@
         }
     </ul>
 </nav>
-
-

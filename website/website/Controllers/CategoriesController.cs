@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -14,13 +15,13 @@ public class CategoriesController : Controller
     {
         _context = context;
     }
-
+    [Authorize(Roles = "Admin")]
     // GET: Categories
     public async Task<IActionResult> Index()
     {
         return View(await _context.Categories.ToListAsync());
     }
-
+    [Authorize(Roles = "Admin")]
     // GET: Categories/Details/5
     public async Task<IActionResult> Details(int? id)
     {
@@ -38,13 +39,13 @@ public class CategoriesController : Controller
 
         return View(category);
     }
-
+    [Authorize(Roles = "Admin")]
     // GET: Categories/Create
     public IActionResult Create()
     {
         return View();
     }
-
+    [Authorize(Roles = "Admin")]
     // POST: Categories/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -60,7 +61,7 @@ public class CategoriesController : Controller
         TempData["ErrorMessage"] = "Failed to create category.";
         return View(category);
     }
-
+    [Authorize(Roles = "Admin")]
     // GET: Categories/Edit/5
     public async Task<IActionResult> Edit(int? id)
     {
@@ -76,7 +77,7 @@ public class CategoriesController : Controller
         }
         return View(category);
     }
-
+    [Authorize(Roles = "Admin")]
     // POST: Categories/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -116,7 +117,7 @@ public class CategoriesController : Controller
 
 
 
-
+    [Authorize(Roles = "Admin")]
     // GET: Categories/Delete/5
     public async Task<IActionResult> Delete(int? id)
     {
@@ -134,7 +135,7 @@ public class CategoriesController : Controller
 
         return View(category);
     }
-
+    [Authorize(Roles = "Admin")]
     // POST: Categories/Delete/5
     [HttpPost, ActionName("DeleteConfirmed")]
     [ValidateAntiForgeryToken]
@@ -161,7 +162,7 @@ public class CategoriesController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-
+    [Authorize(Roles = "Admin")]
     private bool CategoryExists(int id)
     {
         return _context.Categories.Any(e => e.CategoryId == id);

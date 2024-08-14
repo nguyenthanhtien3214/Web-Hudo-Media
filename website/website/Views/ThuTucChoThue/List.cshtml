@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<website.Models.Document>
 
 @{
+    Layout = "~/Views/QuanLy/_Layout.cshtml";
     ViewData["Title"] = "Danh sách tài liệu";
 }
 
@@ -40,4 +41,6 @@
             </tr>
         }
     </tbody>
+    <a asp-action="Edit" class="btn btn-secondary">Chuyển qua trang Edit</a>
+
 </table>

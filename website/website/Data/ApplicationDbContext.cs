@@ -19,6 +19,10 @@ namespace website.Data
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<Document> Documents { get; set; }
 
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<PasswordReset> PasswordResets { get; set; }
+        public DbSet<PasswordChange> PasswordChanges { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -32,15 +36,24 @@ namespace website.Data
             modelBuilder.Entity<ProductImage>().ToTable("product_images");
             modelBuilder.Entity<Document>().ToTable("documents");
 
+            modelBuilder.Entity<Admin>().ToTable("Admins");
+            modelBuilder.Entity<PasswordReset>().ToTable("PasswordResets");
+            modelBuilder.Entity<PasswordChange>().ToTable("PasswordChanges");
+            modelBuilder.Entity<LoginAttempt>().ToTable("LoginAttempts");
+
+            // Configure relationships
             modelBuilder.Entity<Product>()
                 .HasMany(p => p.Images)
                 .WithOne(pi => pi.Product)
                 .HasForeignKey(pi => pi.ProductId);
 
-            // Cấu hình decimal cho các thuộc tính liên quan
+            // Configure data types
             modelBuilder.Entity<Product>()
                 .Property(p => p.Price)
                 .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Quantity);
 
             modelBuilder.Entity<CartItem>()
                 .Property(c => c.Price)
@@ -57,6 +70,30 @@ namespace website.Data
             modelBuilder.Entity<InvoiceItem>()
                 .Property(ii => ii.Total)
                 .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Admin>()
+                .Property(a => a.CreatedAt)
+                .HasColumnType("datetime2");
+
+            modelBuilder.Entity<Admin>()
+                .Property(a => a.UpdatedAt)
+                .HasColumnType("datetime2");
+
+            modelBuilder.Entity<PasswordReset>()
+                .Property(pr => pr.CreatedAt)
+                .HasColumnType("datetime2");
+
+            modelBuilder.Entity<PasswordReset>()
+                .Property(pr => pr.ExpiresAt)
+                .HasColumnType("datetime2");
+
+            modelBuilder.Entity<PasswordChange>()
+                .Property(pc => pc.ChangedAt)
+                .HasColumnType("datetime2");
+
+            modelBuilder.Entity<LoginAttempt>()
+                .Property(la => la.AttemptedAt)
+                .HasColumnType("datetime2");
         }
     }
 }
