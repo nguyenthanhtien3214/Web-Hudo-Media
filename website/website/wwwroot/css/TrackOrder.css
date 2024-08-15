@@ -1,5 +1,6 @@
 ﻿.container {
-    max-width: 75%p;
+    width: 90%;
+    max-width: 75%; /* Sửa lỗi chính tả từ '75%p' thành '75%' */
     margin: auto;
     padding: 10px;
     background-color: #f9f9f9;
@@ -104,4 +105,40 @@ strong {
 
 span {
     color: #e74c3c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        max-width: 100%; /* Đảm bảo container chiếm toàn bộ chiều rộng trên màn hình nhỏ */
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+        text-align: center; /* Căn giữa tiêu đề trên màn hình nhỏ */
+    }
+
+    .btn-primary {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    .alert-warning {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    .table th, .table td {
+        padding: 8px;
+    }
 }

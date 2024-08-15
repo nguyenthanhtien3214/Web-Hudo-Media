@@ -45,7 +45,7 @@
                         <h1>@product.Name</h1>
                     </div>
                     <div class="price">
-                        <span>@product.Price.ToString("C")</span>
+                        <span>@String.Format("{0:N0} VNĐ", product.Price)</span>
                     </div>
                     <a href="@Url.Action("ProductsCard", new { id = product.ProductId })" class="buy--btn">Xem Chi Tiết</a>
                 </div>

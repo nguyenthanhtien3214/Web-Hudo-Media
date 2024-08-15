@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Cart";
-    decimal totalAmount = Model.Sum(item => item.Quantity * item.Price);
+    decimal totalAmount = Model.Sum(item => item.Quantity * item.Price * item.RentalDays); // Tổng giá trị tất cả các sản phẩm trong giỏ
 }
 @section Styles {
     <link rel="stylesheet" href="~/css/Cart.css" asp-append-version="true" />
@@ -48,8 +48,8 @@ else
                     <td>
                         <input type="number" id="rentalDays-@item.ProductId" value="@item.RentalDays" min="1" max="365" class="form-control" />
                     </td>
-                    <td>@item.Price.ToString("C")</td>
-                    <td>@(item.Quantity * item.Price)</td>
+                    <td>@String.Format("{0:N0} VNĐ", item.Price)</td>
+                    <td>@String.Format("{0:N0} VNĐ", item.Quantity * item.Price * item.RentalDays)</td>
                     <td>
                         <button onclick="updateCart(@item.ProductId)" class="btn btn-primary">Cập nhật</button>
                         <form asp-action="RemoveFromCart" method="post" class="form-inline" style="display:inline;">
@@ -64,7 +64,7 @@ else
 
     <div>
         <strong>Tổng cộng:</strong>
-        <span>@totalAmount.ToString("C")</span>
+        <span>@String.Format("{0:N0} VNĐ", totalAmount)</span>
     </div>
 
     <a href="@Url.Action("Checkout", "Home")" class="btn btn-primary">Thanh Toán</a>

@@ -1,20 +1,25 @@
 ﻿<style >
 .product-detail {
     display: flex;
+    flex-wrap: wrap; /* Cho phép các phần tử con gói lại khi màn hình nhỏ */
     align-items: flex-start;
 }
 
 .product-detail__photo {
     margin-right: 20px;
+    flex: 1 1 100%;
+    text-align: center; /* Căn giữa hình ảnh khi ở trên màn hình nhỏ */
 }
 
     .product-detail__photo img {
-        max-width: 300px; /* Đặt chiều rộng tối đa cho ảnh */
+        max-width: 100%;
         height: auto;
+        width: 300px;
+        max-width: 100%; /* Đảm bảo ảnh không vượt quá chiều rộng của container */
     }
 
 .product-detail__info {
-    flex: 1;
+    flex: 1 1 100%;
 }
 
 .quantity-selector {
@@ -44,4 +49,34 @@ button {
     padding: 0.5em 1em;
     cursor: pointer;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product-detail {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-detail__photo {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+        .product-detail__photo img {
+            max-width: 100%;
+            height: auto;
+            width: 100%; /* Đảm bảo ảnh co giãn theo chiều rộng của thiết bị */
+        }
+
+    .quantity-selector {
+        justify-content: center;
+    }
+
+    button {
+        width: 100%;
+        padding: 0.75em;
+        font-size: 1rem;
+    }
+}
+
 </style >

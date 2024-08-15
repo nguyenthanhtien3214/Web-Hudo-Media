@@ -1,12 +1,54 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "E:\\HUDO\\web3\\website\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\wwwroot\\css\\productscard.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\wwwroot\\css\\productscard.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\views\\home\\productscard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\views\\home\\productscard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductsCard.cshtml",
+              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\Views\\Home\\ProductsCard.cshtml",
+              "RelativeDocumentMoniker": "website\\Views\\Home\\ProductsCard.cshtml",
+              "ToolTip": "E:\\HUDO\\web3\\website\\website\\Views\\Home\\ProductsCard.cshtml",
+              "RelativeToolTip": "website\\Views\\Home\\ProductsCard.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAJ4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-15T14:55:52.189Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductsCard.css",
+              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\ProductsCard.css",
+              "RelativeDocumentMoniker": "website\\wwwroot\\css\\ProductsCard.css",
+              "ToolTip": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\ProductsCard.css",
+              "RelativeToolTip": "website\\wwwroot\\css\\ProductsCard.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-08-15T14:55:48.811Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

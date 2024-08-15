@@ -19,12 +19,11 @@ body {
     padding: 10px 20px;
     background: linear-gradient(90deg, #ffffff, #f0f0f0);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    position: fixed;
+    position: relative; /* Thay đổi từ fixed thành relative hoặc static */
     width: 100%;
-    top: 0;
-    z-index: 1000;
     height: 65px;
 }
+
 
 .logo img {
     height: 40px;
@@ -225,4 +224,54 @@ body {
     width: 100%;
     border-radius: 15px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center; /* Căn giữa nội dung header */
+        padding: 15px;
+        height: auto;
+    }
+
+    .nav-list {
+        padding-left: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .nav-item {
+        margin: 10px 5px;
+    }
+
+    .main-content {
+        width: 95%;
+        margin: 10px auto;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+    }
+
+    .content {
+        margin: 10px 0;
+        padding: 15px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-column {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 20px;
+    }
+
+    .footer-bottom {
+        font-size: 12px;
+        padding: 10px 5px;
+    }
 }

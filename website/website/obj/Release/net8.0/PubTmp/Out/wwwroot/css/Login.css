@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-    width: 100%;
+    width: 90%;
     max-width: 400px;
     margin: 50px auto;
     padding: 30px;
@@ -74,6 +74,7 @@ button[type="submit"] {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
 }
 
     button[type="submit"]:hover {
@@ -98,4 +99,33 @@ a {
     color: red;
     text-align: center;
     margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+        margin: 30px auto;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    button[type="submit"] {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    a {
+        font-size: 12px;
+    }
 }

@@ -1,5 +1,4 @@
-﻿
-:root {
+﻿:root {
     --color-primary: #4c4c4c;
     --color-secondary: #a6a6a6;
     --color-highlight: #ff3f40;
@@ -90,6 +89,7 @@ img {
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s ease-in-out; /* Thêm chuyển đổi mượt mà */
     }
+
         .photo-main img:hover {
             transform: scale(1.05); /* Phóng to ảnh lên 5% khi di chuột vào */
         }
@@ -221,4 +221,26 @@ button[type="submit"] {
     border-radius: 5px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* Responsive Adjustments */ @media (max-width: 768px) {
+    .content {
+        width: 100%;
+        margin: 0 10px;
+    }
+
+    .product-list {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 20px 10px;
+    }
+
+    .product {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .page-navigation {
+        position: static;
+        transform: none;
+        margin-top: 20px;
+    }
 }

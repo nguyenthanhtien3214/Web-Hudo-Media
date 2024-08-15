@@ -1,34 +1,49 @@
-﻿body {
+﻿﻿body {
     font-family: 'Poppins', sans-serif;
     background-color: #f9f9f9;
     color: #333;
 }
-
 .product-detail {
     display: flex;
     padding: 30px;
     background: #ffffff;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
-    max-width: 1200px;
+    width: 1200px;
+    height: 500px;
+    padding : 0px 30px 0px 30px;
     margin: 40px auto;
     line-height: 1.6;
+    overflow: hidden; /* Ngăn tràn */
 }
 
 .product-detail__photo {
     flex: 1;
     margin-right: 25px;
+    max-width: 40%; /* Cố định không gian cho ảnh */
+    max-height: 100%; /* Đảm bảo chiều cao ảnh không vượt quá chiều cao của div */
 }
 
     .product-detail__photo img {
+        width: 100%; /* Ảnh sẽ tự động điều chỉnh theo không gian div */
+        height: auto;
+        max-height: 100%; /* Không cho ảnh vượt quá chiều cao của div */
+        object-fit: cover; /* Giữ tỷ lệ ảnh nhưng cho phép crop nếu cần */
         border-radius: 10px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
         .product-detail__photo img:hover {
             transform: scale(1.05);
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
         }
+.product-detail__thumbnails img:hover {
+    border-color: #6c63ff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.product-detail__info button:hover {
+    background: linear-gradient(to right, #3b3b98, #27275d);
+    transform: scale(1.05);
+}
 
 .product-detail__thumbnails {
     display: flex;
@@ -44,11 +59,6 @@
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-        .product-detail__thumbnails img:hover {
-            border-color: #6c63ff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
 .product-detail__info {
     flex: 1;
     display: flex;
@@ -57,13 +67,16 @@
     background-color: #f7f7ff;
     padding: 20px;
     border-radius: 10px;
+    overflow: hidden;
 }
 
     .product-detail__info p {
         margin: 10px 0;
         color: #555;
+        white-space: nowrap; /* Ngăn văn bản bị xuống dòng */
+        overflow: hidden; /* Ẩn phần bị tràn ra ngoài */
+        text-overflow: ellipsis; /* Thêm dấu ba chấm nếu văn bản quá dài */
     }
-
         .product-detail__info p strong {
             color: #333;
             font-weight: 600;
@@ -84,8 +97,3 @@
         cursor: pointer;
         transition: background 0.3s ease, transform 0.3s ease;
     }
-
-        .product-detail__info button:hover {
-            background: linear-gradient(to right, #3b3b98, #27275d);
-            transform: scale(1.05);
-        }

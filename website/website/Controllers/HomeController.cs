@@ -181,6 +181,9 @@ namespace website.Controllers
                 cartItem.Quantity = quantity;
                 cartItem.RentalDays = rentalDays;
 
+                // Cập nhật giá tổng cộng dựa trên số lượng và số ngày thuê
+                cartItem.Price = product.Price * quantity * rentalDays;
+
                 string updatedCart = JsonConvert.SerializeObject(cart);
                 CookieOptions options = new CookieOptions
                 {
@@ -194,6 +197,7 @@ namespace website.Controllers
 
             return Json(new { success = false, message = "Không tìm thấy mục giỏ hàng" });
         }
+
 
         public IActionResult Cart()
         {
@@ -215,12 +219,15 @@ namespace website.Controllers
                     if (product != null)
                     {
                         item.Product = product;
+                        // Cập nhật giá tổng cộng dựa trên số lượng và số ngày thuê
+                        item.Price = product.Price; // Đơn giá cho 1 sản phẩm trong 1 ngày
                     }
                 }
             }
 
             return View(cart);
         }
+
 
         public IActionResult Checkout()
         {
