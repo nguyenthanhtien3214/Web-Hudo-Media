@@ -18,7 +18,27 @@
                     <img src="~/images/logo.png" alt="Company Logo">
                 </a>
             </div>
-            <nav class="nav">
+
+            <!-- Cart and Hamburger Menu Wrapper -->
+            <div class="menu-wrapper">
+                <!-- Cart Icon -->
+                <div class="cart">
+                    <a href="@Url.Action("Cart", "Home")">
+                        <img src="~/images/cart.png" alt="Giỏ" class="cart-icon">
+                        <span class="cart-count">@ViewBag.CartCount</span>
+                    </a>
+                </div>
+
+                <!-- Hamburger Menu -->
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="nav" id="nav-menu">
                 <ul class="nav-list">
                     <li class="nav-item @((ViewBag.ActivePage == "Home") ? "active" : "")">
                         <a href="@Url.Action("Index", "Home")">Trang Chủ</a>
@@ -34,13 +54,8 @@
                     </li>
                 </ul>
             </nav>
-            <div class="cart">
-                <a href="@Url.Action("Cart", "Home")">
-                    <img src="~/images/cart.png" alt="Giỏ" class="cart-icon">
-                    <span class="cart-count">@ViewBag.CartCount</span>
-                </a>
-            </div>
         </header>
+
 
         <div class="main-content">
             <div class="content-wrapper">
@@ -70,7 +85,6 @@
                         <div class="footer-social-icons">
                             <a href="https://www.facebook.com/huystudio157/" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                             <a href="https://zalo.me/0355546254" class="social-icon"><img src="~/images/zalo-icon.png" alt="Zalo Icon" style="width: 24px; height: 24px;"></a>
-
                         </div>
                     </div>
                 </div>
@@ -109,7 +123,6 @@
                         </ul>
                     </div>
                 </div>
-
             </div>
         </section>
         <div class="footer-bottom">
@@ -121,6 +134,33 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- JavaScript to toggle menu -->
+    <script>
+        document.getElementById("hamburger").addEventListener("click", function () {
+            var navMenu = document.getElementById("nav-menu");
+            var overlay = document.createElement("div");
+            overlay.className = "overlay";
+
+            if (!navMenu.classList.contains("active")) {
+                navMenu.classList.add("active");
+                overlay.classList.add("active");
+                document.body.appendChild(overlay); // Thêm lớp overlay vào body
+            } else {
+                navMenu.classList.remove("active");
+                overlay.classList.remove("active");
+                document.body.removeChild(document.querySelector(".overlay"));
+            }
+
+            overlay.addEventListener("click", function () {
+                navMenu.classList.remove("active");
+                document.body.removeChild(document.querySelector(".overlay"));
+            });
+        });
+    </script>
+
+
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

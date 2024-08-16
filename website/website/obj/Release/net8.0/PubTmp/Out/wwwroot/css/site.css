@@ -1,15 +1,18 @@
 ﻿/* Body and Container */
 body {
     background-image: url('/images/studio2.jpg');
-    background-size: cover; /* Để ảnh nền bao phủ toàn bộ màn hình */
-    background-position: center; /* Đặt vị trí của ảnh nền ở giữa */
-    background-repeat: no-repeat; /* Ảnh nền không lặp lại */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
 }
 
 .wrapper {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* Đảm bảo chiều cao tối thiểu là toàn màn hình */
 }
 
 .header {
@@ -19,11 +22,9 @@ body {
     padding: 10px 20px;
     background: linear-gradient(90deg, #ffffff, #f0f0f0);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    position: relative; /* Thay đổi từ fixed thành relative hoặc static */
     width: 100%;
-    height: 65px;
+    height: 80px;
 }
-
 
 .logo img {
     height: 40px;
@@ -89,8 +90,9 @@ body {
 }
 
 .main-content {
+    flex-grow: 1;
     display: flex;
-    flex: 1;
+    flex-direction: column;
     padding-top: 65px;
     width: 85%;
     margin: 20px auto;
@@ -98,24 +100,11 @@ body {
     align-items: center;
 }
 
-.full-width-image {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-    .full-width-image img {
-        width: 100%;
-        height: auto;
-        max-height: 100%;
-    }
-
 .content-wrapper {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    min-height: 600px;
+    min-height: 700px;
 }
 
 .content {
@@ -124,7 +113,6 @@ body {
     background-color: #ffffff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     margin: 0 20px;
-    min-height: 700px;
     border-radius: 15px;
 }
 
@@ -135,6 +123,7 @@ body {
     font-family: "Open Sans", sans-serif;
     border-radius: 15px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 .footer-container {
@@ -226,52 +215,144 @@ body {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        align-items: center; /* Căn giữa nội dung header */
-        padding: 15px;
-        height: auto;
+/* Hamburger Button Styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50px;
+    height: 40px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+    .hamburger span {
+        display: block;
+        width: 100%;
+        height: 3px; /* Chiều cao của các thanh gạch */
+        background-color: #333; /* Màu của các thanh gạch */
+        border-radius: 2px; /* Bo tròn góc */
     }
 
+/* Cart and Hamburger Menu Wrapper */
+.menu-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.cart {
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.cart-icon {
+    height: 24px;
+    vertical-align: middle;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #0077cc;
+    color: #ffffff;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px; /* Chiều cao của các thanh gạch */
+    background-color: #333; /* Màu của các thanh gạch */
+    margin: 5px 0; /* Khoảng cách giữa các thanh */
+    border-radius: 2px; /* Bo tròn góc */
+}
+
+/* Responsive Design */
+
+/* Styles for mobile screens */
+@media (max-width: 768px) {
+    .nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 65px;
+        right: 20px;
+        width: 250px;
+        background-color: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        border-radius: 0 0 20px 20px;
+        padding: 15px 0;
+    }
+
+        .nav.active {
+            display: flex;
+        }
+
     .nav-list {
-        padding-left: 0;
-        justify-content: center;
-        flex-wrap: wrap;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 0 0 10px;
     }
 
     .nav-item {
-        margin: 10px 5px;
-    }
-
-    .main-content {
-        width: 95%;
-        margin: 10px auto;
-    }
-
-    .content-wrapper {
-        flex-direction: column;
-    }
-
-    .content {
         margin: 10px 0;
-        padding: 15px;
     }
 
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
+    .hamburger {
+        border: 1px solid #333; /* Thêm đường viền để dễ nhìn thấy hơn */
+        display: flex;
     }
 
-    .footer-column {
+    /* Overlay effect when menu is active */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
-        max-width: 300px;
-        margin-bottom: 20px;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
     }
 
-    .footer-bottom {
-        font-size: 12px;
-        padding: 10px 5px;
+        .overlay.active {
+            display: block;
+        }
+}
+
+/* Ensure footer is at the bottom on all screen sizes */
+@media (max-width: 768px) {
+    .wrapper {
+        min-height: auto;
     }
+    .hamburger {
+        border: 1px solid #333; /* Thêm đường viền để dễ nhìn thấy hơn */
+        display: flex;
+    }
+    .footer-section {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
+}
+.main-content{
+    padding :0px;
+}
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px; /* Chiều cao của các thanh gạch */
+    background-color: #333; /* Màu của các thanh gạch */
+    margin: 5px 0; /* Khoảng cách giữa các thanh */
+    border-radius: 2px; /* Bo tròn góc */
 }
