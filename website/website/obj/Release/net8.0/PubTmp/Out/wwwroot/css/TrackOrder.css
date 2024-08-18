@@ -1,74 +1,15 @@
-﻿.container {
+﻿/* Tổng thể cho container */
+.container {
     width: 90%;
-    max-width: 75%; /* Sửa lỗi chính tả từ '75%p' thành '75%' */
+    max-width: 100%;
     margin: auto;
     padding: 10px;
     background-color: #f9f9f9;
     border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ cho viền */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2, h3 {
-    color: #333;
-    font-family: 'Arial', sans-serif;
-}
-
-h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #4a90e2;
-    text-align: center;
-}
-
-h2 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #333;
-    text-align: right;
-}
-
-.form-group input {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-}
-
-.btn-primary {
-    background-color: #4a90e2;
-    color: white;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-    .btn-primary:hover {
-        background-color: #357ab8;
-    }
-
-.alert-warning {
-    background-color: #ffecb3;
-    color: #856404;
-    border: 1px solid #ffeeba;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 1rem;
-}
-
+/* Căn chỉnh cho bảng "Chi tiết đơn hàng" */
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -95,50 +36,52 @@ h3 {
         background-color: #f1f1f1;
     }
 
-.mt-4 {
-    margin-top: 1.5rem;
-}
-
-strong {
-    color: #333;
-}
-
-span {
-    color: #e74c3c;
-}
-
-/* Responsive Design */
+/* Responsive Design chỉ cho khung chi tiết đơn hàng */
 @media (max-width: 768px) {
+    .table {
+        display: block;
+        width: 100%;
+        overflow-x: auto; /* Đảm bảo bảng cuộn ngang nếu quá dài */
+        white-space: nowrap; /* Không bị xuống dòng, có thể cuộn ngang */
+    }
+
+        .table th, .table td {
+            font-size: 0.95rem;
+            padding: 10px;
+        }
+
+        /* Định dạng các hàng của bảng trên mobile */
+        .table thead {
+            display: none; /* Ẩn tiêu đề cột trên màn hình nhỏ */
+        }
+
+        .table tr {
+            display: block;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table td {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 5px;
+            border: none;
+        }
+
+            .table td::before {
+                content: attr(data-label); /* Sử dụng thuộc tính data-label để hiển thị tiêu đề */
+                font-weight: bold;
+                width: 50%;
+                text-align: left;
+            }
+
+        .table td {
+            font-size: 0.9rem;
+        }
+
+    /* Sửa lỗi co bảng quá nhỏ */
     .container {
-        width: 95%;
-        max-width: 100%; /* Đảm bảo container chiếm toàn bộ chiều rộng trên màn hình nhỏ */
-        padding: 15px;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    h3 {
-        font-size: 1.3rem;
-        text-align: center; /* Căn giữa tiêu đề trên màn hình nhỏ */
-    }
-
-    .btn-primary {
-        font-size: 1rem;
-        padding: 8px 16px;
-    }
-
-    .alert-warning {
-        font-size: 0.9rem;
-        padding: 8px 16px;
-    }
-
-    .table th, .table td {
-        padding: 8px;
+        width: 100%; /* Sử dụng toàn bộ chiều rộng màn hình */
     }
 }
+

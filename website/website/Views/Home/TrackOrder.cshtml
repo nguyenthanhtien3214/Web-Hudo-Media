@@ -46,17 +46,18 @@
                     @foreach (var item in ViewBag.OrderDetails)
                     {
                         <tr>
-                            <td>@item.ProductName</td>
-                            <td>@item.Quantity</td>
-                            <td>@item.RentalDays</td>
-                            <td>@item.Price</td>
-                            <td>@String.Format("{0:N0} VNĐ", item.Quantity * item.Price)</td>
+                            <td data-label="Sản phẩm">@item.ProductName</td>
+                            <td data-label="Số lượng">@item.Quantity</td>
+                            <td data-label="Số ngày thuê">@item.RentalDays</td>
+                            <td data-label="Đơn giá">@item.Price</td>
+                            <td data-label="Tổng">@String.Format("{0:N0} VNĐ", item.Quantity * item.Price)</td>
                         </tr>
                     }
                 </tbody>
             </table>
             <h3>Tổng cộng: @String.Format("{0:N0} VNĐ", ViewBag.TotalAmount)</h3>
         </div>
+
 
         <div class="mt-4">
             <h2>Thông tin thêm về đơn hàng</h2>

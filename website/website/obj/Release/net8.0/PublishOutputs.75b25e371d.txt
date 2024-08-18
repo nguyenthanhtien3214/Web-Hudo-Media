@@ -1,6 +1,7 @@
 E:\HUDO\web3\website\website\obj\Release\net8.0\PubTmp\Out\website.exe
 E:\HUDO\web3\website\website\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
 E:\HUDO\web3\website\website\obj\Release\net8.0\PubTmp\Out\appsettings.json
+E:\HUDO\web3\website\website\obj\Release\net8.0\PubTmp\Out\wwwroot\css\Cart.css
 E:\HUDO\web3\website\website\obj\Release\net8.0\PubTmp\Out\wwwroot\css\DichVuThue.css
 E:\HUDO\web3\website\website\obj\Release\net8.0\PubTmp\Out\wwwroot\css\Login.css
 E:\HUDO\web3\website\website\obj\Release\net8.0\PubTmp\Out\website.dll

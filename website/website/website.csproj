@@ -33,6 +33,7 @@
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\Products\_ViewStart.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Shared\_LayoutQuanLy.cshtml" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\Cart.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\DichVuThue.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\Login.css" />
   </ItemGroup>

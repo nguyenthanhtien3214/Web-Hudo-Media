@@ -6,48 +6,7 @@
 
 @section Styles {
     <link rel="stylesheet" href="~/css/ProductsCard.css" asp-append-version="true" />
-    <style>
-        /* Overlay làm mờ toàn bộ nội dung */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-            display: none;
-        }
-
-        /* Modal để hiển thị phần mô tả đầy đủ */
-        .modal-description {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50%;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            z-index: 1000;
-            display: none;
-        }
-
-        .modal-content {
-            text-align: center;
-            padding: 10px;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            cursor: pointer;
-            font-size: 24px;
-            font-weight: bold;
-            color: #000;
-        }
-    </style>
+   
 }
 
 <h1>@Model.Name</h1>
@@ -71,8 +30,12 @@
         <!-- Mô tả sản phẩm có dấu ba chấm và hiển thị đầy đủ khi click -->
         <p><strong>Mô tả:</strong></p>
         <div class="description">
-            <span class="short-text">@Model.Description.Substring(0, Math.Min(150, Model.Description.Length))</span>
-            <span class="full-text" style="display: none;">@Model.Description</span>
+            <span class="short-text">
+                @Model.Description.Substring(0, Math.Min(150, Model.Description.Length))
+            </span>
+            <span class="full-text" style="display: none;">
+                @Model.Description
+            </span>
             @if (Model.Description.Length > 150)
             {
                 <span class="read-more" onclick="toggleDescription(this)" style="cursor: pointer;">... (Xem thêm)</span>
@@ -121,6 +84,8 @@
             document.getElementById('full-description').innerText = fullText;
             document.getElementById('overlay').style.display = 'block';
             document.getElementById('modal-description').style.display = 'block';
+            document.getElementById('modal-description').style.maxHeight = '400px'; // Giới hạn chiều cao modal
+            document.getElementById('modal-description').style.overflowY = 'auto'; // Thêm thanh cuộn cho modal nếu cần
         }
 
         // Đóng modal
@@ -128,6 +93,11 @@
             document.getElementById('overlay').style.display = 'none';
             document.getElementById('modal-description').style.display = 'none';
         }
+
+        // Thêm sự kiện để đóng modal khi nhấn vào overlay
+        document.getElementById('overlay').addEventListener('click', function () {
+            closeModal();
+        });
 
         function addToCart(productId) {
             var quantity = $('#quantity').val();

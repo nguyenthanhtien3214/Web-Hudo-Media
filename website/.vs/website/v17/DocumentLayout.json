@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "E:\\HUDO\\web3\\website\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\wwwroot\\css\\trackorder.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\wwwroot\\css\\trackorder.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\views\\home\\trackorder.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\views\\home\\trackorder.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\wwwroot\\css\\dichvuthue.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\wwwroot\\css\\dichvuthue.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\views\\home\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\views\\home\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|e:\\hudo\\web3\\website\\website\\wwwroot\\css\\checkout.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{ED2ABB38-181E-4D87-BBFB-77AA418DF253}|website\\website.csproj|solutionrelative:website\\wwwroot\\css\\checkout.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DichVuThue.css",
-              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\DichVuThue.css",
-              "RelativeDocumentMoniker": "website\\wwwroot\\css\\DichVuThue.css",
-              "ToolTip": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\DichVuThue.css",
-              "RelativeToolTip": "website\\wwwroot\\css\\DichVuThue.css",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAACIAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "TrackOrder.css",
+              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\TrackOrder.css",
+              "RelativeDocumentMoniker": "website\\wwwroot\\css\\TrackOrder.css",
+              "ToolTip": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\TrackOrder.css",
+              "RelativeToolTip": "website\\wwwroot\\css\\TrackOrder.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-08-16T18:10:30.946Z",
+              "WhenOpened": "2024-08-18T16:10:43.649Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "website\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "E:\\HUDO\\web3\\website\\website\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "website\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAmwIIAAAAOAAAA",
+              "Title": "TrackOrder.cshtml",
+              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\Views\\Home\\TrackOrder.cshtml",
+              "RelativeDocumentMoniker": "website\\Views\\Home\\TrackOrder.cshtml",
+              "ToolTip": "E:\\HUDO\\web3\\website\\website\\Views\\Home\\TrackOrder.cshtml",
+              "RelativeToolTip": "website\\Views\\Home\\TrackOrder.cshtml",
+              "ViewState": "AQIAABQAAAAAAAAAAAAwwDsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-16T16:34:30.904Z",
+              "WhenOpened": "2024-08-18T16:04:18.894Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "site.css",
-              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "website\\wwwroot\\css\\site.css",
-              "ToolTip": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "website\\wwwroot\\css\\site.css",
-              "ViewState": "AQIAANAAAAAAAAAAAAAAAN8AAAANAAAA",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "website\\Controllers\\HomeController.cs",
+              "ToolTip": "E:\\HUDO\\web3\\website\\website\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "website\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAEIBAAAAAAAAAAAwwGkBAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-18T15:52:48.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Checkout.css",
+              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\Checkout.css",
+              "RelativeDocumentMoniker": "website\\wwwroot\\css\\Checkout.css",
+              "ToolTip": "E:\\HUDO\\web3\\website\\website\\wwwroot\\css\\Checkout.css",
+              "RelativeToolTip": "website\\wwwroot\\css\\Checkout.css",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAYwGYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-08-16T16:34:23.285Z",
+              "WhenOpened": "2024-08-18T15:51:01.487Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Checkout.cshtml",
+              "DocumentMoniker": "E:\\HUDO\\web3\\website\\website\\Views\\Home\\Checkout.cshtml",
+              "RelativeDocumentMoniker": "website\\Views\\Home\\Checkout.cshtml",
+              "ToolTip": "E:\\HUDO\\web3\\website\\website\\Views\\Home\\Checkout.cshtml",
+              "RelativeToolTip": "website\\Views\\Home\\Checkout.cshtml",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-18T15:50:31.546Z",
               "EditorCaption": ""
             }
           ]

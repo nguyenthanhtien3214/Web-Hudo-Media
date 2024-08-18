@@ -100,19 +100,47 @@ input.form-control:hover, textarea.form-control:hover {
     border-color: #5a67d8;
 }
 
-/* Thiết kế cho các thiết bị di động */
+
+
+/* Điều chỉnh cho màn hình nhỏ (mobile) */
 @media (max-width: 768px) {
+    /* Tiêu đề */
+    h1 {
+        font-size: 2rem;
+        text-align: center;
+        padding-left: 0;
+    }
+
+    /* Form */
     form {
-        flex-direction: column;
+        padding: 15px;
+        box-shadow: none;
     }
 
+    /* Nhóm các điều khiển form */
     .form-group {
-        flex: 1 1 100%;
+        flex: 1 1 100%; /* Mỗi nhóm chiếm toàn bộ chiều rộng trên mobile */
         margin-right: 0;
+        margin-bottom: 15px;
     }
 
+    /* Nhãn */
+    label {
+        font-size: 1rem;
+        margin-bottom: 8px;
+        color: #4a5568;
+    }
+
+    /* Input fields */
+    input.form-control, textarea.form-control {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+
+    /* Nút thanh toán */
     .btn-primary {
-        width: 100%;
-        max-width: 100%;
+        width: 100%; /* Nút chiếm toàn bộ chiều rộng */
+        font-size: 1.1rem;
+        padding: 12px;
     }
 }

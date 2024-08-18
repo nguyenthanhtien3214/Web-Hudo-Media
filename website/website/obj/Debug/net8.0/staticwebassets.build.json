@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JyZa+YXFIMz+AzvoHudwYtHpJEFLpNE00qlY7v01mGI=",
+  "Hash": "jtswtDOpZ2lJOXNlgmFbHaMC3NzWs+3iEWYz7Hc//5U=",
   "Source": "website",
   "BasePath": "_content/website",
   "Mode": "Default",
@@ -40941,25 +40941,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\logo.png"
-    },
-    {
-      "Identity": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\logo2.png",
-      "SourceId": "website",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\HUDO\\web3\\website\\website\\wwwroot\\",
-      "BasePath": "_content/website",
-      "RelativePath": "images/logo2.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\logo2.png"
     },
     {
       "Identity": "E:\\HUDO\\web3\\website\\website\\wwwroot\\images\\zalo-icon.png",

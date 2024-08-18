@@ -1,8 +1,10 @@
-﻿﻿body {
+﻿/* Mặc định cho các thiết bị lớn hơn (như desktop) */
+body {
     font-family: 'Poppins', sans-serif;
     background-color: #f9f9f9;
     color: #333;
 }
+
 .product-detail {
     display: flex;
     padding: 30px;
@@ -11,7 +13,7 @@
     border-radius: 15px;
     width: 1200px;
     height: 500px;
-    padding : 0px 30px 0px 30px;
+    padding: 0px 30px;
     margin: 40px auto;
     line-height: 1.6;
     overflow: hidden; /* Ngăn tràn */
@@ -32,14 +34,17 @@
         border-radius: 10px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
         .product-detail__photo img:hover {
             transform: scale(1.05);
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
         }
+
 .product-detail__thumbnails img:hover {
     border-color: #6c63ff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .product-detail__info button:hover {
     background: linear-gradient(to right, #3b3b98, #27275d);
     transform: scale(1.05);
@@ -77,6 +82,7 @@
         overflow: hidden; /* Ẩn phần bị tràn ra ngoài */
         text-overflow: ellipsis; /* Thêm dấu ba chấm nếu văn bản quá dài */
     }
+
         .product-detail__info p strong {
             color: #333;
             font-weight: 600;
@@ -97,3 +103,128 @@
         cursor: pointer;
         transition: background 0.3s ease, transform 0.3s ease;
     }
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    display: none;
+}
+
+/* Modal để hiển thị phần mô tả đầy đủ */
+.modal-description {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1000;
+    display: none;
+}
+
+.modal-content {
+    text-align: center;
+    padding: 10px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+}
+
+.description {
+    max-height: 100px; /* Giới hạn chiều cao cho phần mô tả */
+    overflow-y: auto; /* Thêm thanh cuộn dọc nếu nội dung vượt quá chiều cao */
+    padding-right: 10px; /* Thêm khoảng trống để thanh cuộn không che nội dung */
+}
+
+    /* Tùy chỉnh thanh cuộn (scrollbar) cho đẹp hơn */
+    .description::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .description::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.2); /* Màu của thanh cuộn */
+        border-radius: 4px;
+    }
+
+/* CSS cho thiết bị di động */
+@media (max-width: 768px) {
+    .product-detail {
+        display: block; /* Chuyển về dạng khối */
+        width: 100%;
+        height: auto; /* Để chiều cao tự động */
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .product-detail__photo {
+        max-width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
+        margin-bottom: 20px; /* Thêm khoảng cách bên dưới hình ảnh */
+    }
+
+        .product-detail__photo img {
+            width: 100%; /* Đảm bảo hình ảnh tự động điều chỉnh theo chiều rộng màn hình */
+            height: auto;
+            object-fit: contain;
+        }
+
+    .product-detail__info {
+        padding: 10px; /* Giảm padding cho nội dung */
+    }
+
+        .product-detail__info p {
+            white-space: normal; /* Cho phép văn bản xuống dòng */
+            text-overflow: initial; /* Bỏ dấu ba chấm khi văn bản dài */
+            overflow: visible;
+        }
+
+    .product-detail__thumbnails {
+        justify-content: center; /* Căn giữa các thumbnail */
+    }
+
+        .product-detail__thumbnails img {
+            width: 60px; /* Giảm kích thước thumbnail */
+        }
+
+    .product-detail__info button {
+        width: 100%; /* Nút "Thêm vào giỏ" chiếm toàn bộ chiều rộng */
+    }
+}
+.modal-description {
+    width: 80%;
+}
+
+/* CSS cho thiết bị có màn hình rất nhỏ (ví dụ: điện thoại dưới 500px) */
+@media (max-width: 500px) {
+    .product-detail__info {
+        padding: 8px; /* Giảm padding hơn nữa để tối ưu không gian */
+    }
+
+    .product-detail__thumbnails img {
+        width: 50px; /* Giảm kích thước thumbnail hơn nữa */
+    }
+
+    .product-detail__info p {
+        font-size: 14px; /* Giảm kích thước font để nội dung dễ đọc hơn trên màn hình nhỏ */
+    }
+
+    .product-detail__info .product-price {
+        font-size: 1.5em; /* Điều chỉnh kích thước giá cho màn hình nhỏ */
+    }
+}
+.modal-description{
+    width : 80%;
+}
